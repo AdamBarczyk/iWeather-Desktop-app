@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="IWeatherApp.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IWeatherApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="White">
+
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="../Assets/img/bg.png" Opacity="0.65"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Column="1"
+            Grid.Row="1"
+            RowSpacing="15"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Source="../Assets/img/logo.png" />
+
+            <TextBlock
+                Grid.Row="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Text="Email" 
+                Margin="0,0,0,-15"
+                Foreground="#2A5261"
+                TextWrapping="Wrap"/>
+
+            <TextBox 
+                Grid.Row="2"
+                HorizontalAlignment="Stretch" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" />
+
+            <TextBlock
+                Grid.Row="3"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Text="Password" 
+                Margin="0,0,0,-15"
+                Foreground="#2A5261"
+                TextWrapping="Wrap"/>
+
+            <TextBox 
+                Grid.Row="4"
+                HorizontalAlignment="Stretch" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" />
+
+            <TextBlock
+                Grid.Row="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Text="Confirm Password" 
+                Margin="0,0,0,-15"
+                Foreground="#2A5261"
+                TextWrapping="Wrap"/>
+
+            <TextBox 
+                Grid.Row="6"
+                HorizontalAlignment="Stretch" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top" />
+
+            <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    x:Name="btn_GoBackToStartPage"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,20,0"
+                    Content="Cancel" 
+                    Background="#f8d06c"
+                    Foreground="#2A5261"
+                    VerticalAlignment="Top"/>
+
+                <Button 
+                    x:Name="btn_GoToRegistrationPage"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Margin="20,0,0,0"
+                    Content="Sign Up" 
+                    Background="#f8d06c"
+                    Foreground="#2A5261"
+                    VerticalAlignment="Top"/>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Page>

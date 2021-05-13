@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Firebase.Auth;
+using Newtonsoft.Json;
+using Windows.UI.Popups;
+
+namespace IWeatherApp
+{
+    public class UserService
+    {
+        #region Events
+        // This event fires when a user signs in and redirects user to homepage if signing in has completed successfully
+        #endregion
+
+        #region Properties
+        // This boolean is required to store knowledge about user sign in status
+        private bool isSignedIn = false;
+        public bool IsSignedIn
+        {
+            get { return isSignedIn; }
+            set { isSignedIn = value; }
+        }
+        #endregion
+
+        #region Constructor
+        public UserService() { 
+        }
+        #endregion
+
+        public async Task SignInUser(string email, string password)
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Credentials.FirebaseApiKey));
+
+            try
+            {
+                // Store and sign in user with email and password
+                FirebaseAuthLink userData = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+
+                // Refresh user token as it needs to be valid always
+                await userData.GetFreshAuthAsync();
+
+                // Set signed in state to true
+                IsSignedIn = true;
+            }
+            catch (Exception e)
+            {
+                // if the user is signed in, then it gets him signed out
+                IsSignedIn = false;
+
+                new MessageDialog(e.Message);
+            }
+        }
+
+        public async void CreateAccount(string email, string password)
+        {
+
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Credentials.FirebaseApiKey));
+
+            try
+            {
+                // Store and signUp the user with email and password
+                FirebaseAuthLink userData = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password);
+
+                // Refresh user token as it needs to be valid always
+                await userData.GetFreshAuthAsync();
+
+                new MessageDialog("Account created successfully!");
+            }
+            catch (Exception e)
+            {
+                new MessageDialog(e.Message);
+            }
+        }
+    }
+}
