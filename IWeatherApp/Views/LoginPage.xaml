@@ -8,9 +8,9 @@
     mc:Ignorable="d"
     Background="White">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <local:LoginPageViewModel/>
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid>
 

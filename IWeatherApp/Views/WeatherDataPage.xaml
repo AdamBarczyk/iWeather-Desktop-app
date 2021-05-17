@@ -8,10 +8,6 @@
     mc:Ignorable="d"
     Background="White">
 
-    <Page.DataContext>
-        <local:WeatherDataPageViewModel/>
-    </Page.DataContext>
-
     <!-- Grid for all content on the page -->
     <Grid
         RowSpacing="30">

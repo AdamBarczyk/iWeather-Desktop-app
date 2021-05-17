@@ -55,10 +55,6 @@ namespace IWeatherApp
             {
                 Frame navigationFrame = Window.Current.Content as Frame;
                 bool success = navigationFrame.Navigate(typeof(WeatherDataPage));
-
-                // load weather data about current location in WeatherDataPage
-                WeatherDataPageViewModel _weatherDataPageViewModel = new WeatherDataPageViewModel();
-                _weatherDataPageViewModel.LoadWeatherForCurrentLocation();
             }
             else
             {

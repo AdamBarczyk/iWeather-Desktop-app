@@ -23,55 +23,55 @@ namespace IWeatherApp
         public string CityName
         {
             get { return _cityName; }
-            set { _cityName = value; OnPropertyChanged("CityName"); }
+            set { _cityName = value; OnPropertyChanged(); }
         }
         private string _description;
         public string Description
         {
             get { return _description; }
-            set { _description = value; OnPropertyChanged("Description"); }
+            set { _description = value; OnPropertyChanged(); }
         }
         private string _mainTemp;
         public string MainTemp
         {
             get { return _mainTemp; }
-            set { _mainTemp = value; OnPropertyChanged("MainTemp"); }
+            set { _mainTemp = value; OnPropertyChanged(); }
         }
         private string _feelTemp;
         public string FeelTemp
         {
             get { return _feelTemp; }
-            set { _feelTemp = value; OnPropertyChanged("FeelTemp"); }
+            set { _feelTemp = value; OnPropertyChanged(); }
         }
         private string _minTemp;
         public string MinTemp
         {
             get { return _minTemp; }
-            set { _minTemp = value; OnPropertyChanged("MinTemp"); }
+            set { _minTemp = value; OnPropertyChanged(); }
         }
         private string _maxTemp;
         public string MaxTemp
         {
             get { return _maxTemp; }
-            set { _maxTemp = value; OnPropertyChanged("MaxTemp"); }
+            set { _maxTemp = value; OnPropertyChanged(); }
         }
         private string _pressure;
         public string Pressure
         {
             get { return _pressure; }
-            set { _pressure = value; OnPropertyChanged("Pressure"); }
+            set { _pressure = value; OnPropertyChanged(); }
         }
         private string _humidity;
         public string Humidity
         {
             get { return _humidity; }
-            set { _humidity = value; OnPropertyChanged("Humidity"); }
+            set { _humidity = value; OnPropertyChanged(); }
         }
         private string _wind;
         public string Wind
         {
             get { return _wind; }
-            set { _wind = value; OnPropertyChanged("Wind"); }
+            set { _wind = value; OnPropertyChanged(); }
         }
         private string _weatherIconPath;
         public string WeatherIconPath
@@ -83,10 +83,10 @@ namespace IWeatherApp
 
         public ICommand SearchButtonClicked
         {
-            get { return new DelegateCommand(SearchCity); }
+            get { return new DelegateCommand(async () => await SearchCity()); }
         }
 
-        public async void SearchCity()
+        public async Task SearchCity()
         {
             if (_model == null)
             {
@@ -100,7 +100,7 @@ namespace IWeatherApp
         }
 
         // NIE DZIAŁA WCZYTYWANIE POGODY DLA AKTUALNEJ POZYCJI PO ZALOGOWANIU
-        public async void LoadWeatherForCurrentLocation()
+        private async Task LoadWeatherForCurrentLocation()
         {
             if(_model == null)
             {
@@ -116,6 +116,11 @@ namespace IWeatherApp
             await _model.LoadWeatherData(city);
 
             PushDataToTheView();
+        }
+
+        public async Task OnNavigatedTo()
+        {
+            await LoadWeatherForCurrentLocation();
         }
 
         private void PushDataToTheView()
