@@ -1,4 +1,4 @@
-# iWeather desktop app
+# IWeather desktop app
 
 Weather desktop app with Firebase database
 
