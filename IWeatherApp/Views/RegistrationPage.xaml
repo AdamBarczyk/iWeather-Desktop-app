@@ -42,6 +42,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Image
@@ -63,7 +64,8 @@
                 Grid.Row="2"
                 HorizontalAlignment="Stretch" 
                 TextWrapping="Wrap" 
-                VerticalAlignment="Top" />
+                VerticalAlignment="Top" 
+                Text="{Binding Email, Mode=TwoWay}"/>
 
             <TextBlock
                 Grid.Row="3"
@@ -74,11 +76,11 @@
                 Foreground="#2A5261"
                 TextWrapping="Wrap"/>
 
-            <TextBox 
+            <PasswordBox 
                 Grid.Row="4"
-                HorizontalAlignment="Stretch" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" />
+                HorizontalAlignment="Stretch"  
+                VerticalAlignment="Top" 
+                Password="{Binding Password1, Mode=TwoWay}"/>
 
             <TextBlock
                 Grid.Row="5"
@@ -89,13 +91,23 @@
                 Foreground="#2A5261"
                 TextWrapping="Wrap"/>
 
-            <TextBox 
+            <PasswordBox
                 Grid.Row="6"
                 HorizontalAlignment="Stretch" 
-                TextWrapping="Wrap" 
-                VerticalAlignment="Top" />
+                VerticalAlignment="Top" 
+                Password="{Binding Password2, Mode=TwoWay}"/>
 
-            <Grid Grid.Row="7">
+            <TextBlock
+                Grid.Row="7"
+                MaxWidth="280"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Text="{Binding ErrorMessage}"
+                Margin="0,-15,0,0"
+                Foreground="Red"
+                TextWrapping="Wrap"/>
+
+            <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -109,7 +121,8 @@
                     Content="Cancel" 
                     Background="#f8d06c"
                     Foreground="#2A5261"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    Command="{Binding CancelButtonClicked}"/>
 
                 <Button 
                     x:Name="btn_GoToRegistrationPage"
@@ -119,7 +132,8 @@
                     Content="Sign Up" 
                     Background="#f8d06c"
                     Foreground="#2A5261"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    Command="{Binding SignUpButtonClicked}"/>
             </Grid>
 
         </Grid>

@@ -17,11 +17,18 @@ namespace IWeatherApp
 
         #region Properties
         // This boolean is required to store knowledge about user sign in status
-        private bool isSignedIn = false;
+        private bool _isSignedIn = false;
         public bool IsSignedIn
         {
-            get { return isSignedIn; }
-            set { isSignedIn = value; }
+            get { return _isSignedIn; }
+            set { _isSignedIn = value; }
+        }
+
+        private bool _isRegistrationSucceeded = false;
+        public bool IsRegistrationSucceeded
+        {
+            get { return _isRegistrationSucceeded; }
+            set { _isRegistrationSucceeded = value; }
         }
         #endregion
 
@@ -54,7 +61,7 @@ namespace IWeatherApp
             }
         }
 
-        public async void CreateAccount(string email, string password)
+        public async Task CreateAccount(string email, string password)
         {
 
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Credentials.FirebaseApiKey));
@@ -67,10 +74,12 @@ namespace IWeatherApp
                 // Refresh user token as it needs to be valid always
                 await userData.GetFreshAuthAsync();
 
+                IsRegistrationSucceeded = true;
                 new MessageDialog("Account created successfully!");
             }
             catch (Exception e)
             {
+                IsRegistrationSucceeded = false;
                 new MessageDialog(e.Message);
             }
         }

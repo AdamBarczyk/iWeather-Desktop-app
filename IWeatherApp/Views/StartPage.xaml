@@ -27,11 +27,11 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" MinHeight="55" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <!-- tmp Grid for testing bindings --><!--
@@ -68,7 +68,7 @@
             Grid.Row="0"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Margin="10"
+            Margin="10, 10, 10, 0"
             ColumnSpacing="10">
 
             <Grid.ColumnDefinitions>
@@ -82,7 +82,8 @@
                     Content="Sign In" 
                     Background="#f8d06c"
                     Foreground="#2A5261"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    Command="{Binding ChangeToLoginPageButtonClicked}"/>
 
             <Button x:Name="btn_GoToRegistrationPage"
                     Grid.Column="1"
@@ -90,7 +91,8 @@
                     Content="Sign Up" 
                     Background="#f8d06c"
                     Foreground="#2A5261"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    Command="{Binding ChangeToRegistrationPageButtonClicked}"/>
 
         </Grid>
 

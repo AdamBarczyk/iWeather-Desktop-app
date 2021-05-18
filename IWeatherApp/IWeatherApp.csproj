@@ -149,7 +149,6 @@
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\StartPageModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="UserServices\UserService.cs" />
     <Compile Include="Views\WeatherForecastPage.xaml.cs">

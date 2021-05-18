@@ -8,5 +8,28 @@ namespace IWeatherApp.Models
 {
     class RegistrationService
     {
+        private string _email;
+        private string _password;
+        private bool _isRegistrationSucceeded = false;
+        public bool IsRegistrationSucceeded
+        {
+            get { return _isRegistrationSucceeded; }
+            set { _isRegistrationSucceeded = value; }
+        }
+
+        public RegistrationService(string email, string password)
+        {
+            this._email = email;
+            this._password = password;
+        }
+
+        public async Task SignUpUserAsync()
+        {
+            UserService _userService = new UserService();
+            await _userService.CreateAccount(_email, _password);
+
+            // pass IsRegistrationSucceeded status from userService to this Model
+            IsRegistrationSucceeded = _userService.IsRegistrationSucceeded;
+        }
     }
 }

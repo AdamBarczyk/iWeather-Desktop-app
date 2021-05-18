@@ -44,7 +44,7 @@ namespace IWeatherApp
             get { return new DelegateCommand(SignInUser); }
         }
 
-        public async void SignInUser()
+        private async void SignInUser()
         {
             _loginService = new LoginService(Email, Password);
 

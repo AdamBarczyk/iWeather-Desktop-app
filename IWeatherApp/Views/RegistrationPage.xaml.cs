@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using IWeatherApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,16 +23,13 @@ namespace IWeatherApp
     /// </summary>
     public sealed partial class RegistrationPage : Page
     {
+        private readonly RegistrationViewModel _viewModel;
+
         public RegistrationPage()
         {
+            this.DataContext = _viewModel = new RegistrationViewModel();
+
             this.InitializeComponent();
-
-            this.btn_GoBackToStartPage.Click += Btn_GoBackToStartPage_Click;
-        }
-
-        private void Btn_GoBackToStartPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(StartPage));
         }
     }
 }

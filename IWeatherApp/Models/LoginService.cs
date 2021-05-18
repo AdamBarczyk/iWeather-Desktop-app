@@ -25,11 +25,10 @@ namespace IWeatherApp
 
         public async Task SignInUserAsync()
         {
-            // method is of type "async" because of "await" implementation inside
             UserService userService = new UserService();
             await userService.SignInUser(email, password);
 
-            // pass isSignedIn status from userService to this ViewModel
+            // pass _isSignedIn status from userService to this Model
             IsSignedIn = userService.IsSignedIn;
         }
 

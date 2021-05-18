@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,21 +28,13 @@ namespace IWeatherApp
         public StartPage()
         {
             this.DataContext = _viewModel = new StartViewModel();
-
             this.InitializeComponent();
-
-            this.btn_GoToLoginPage.Click += Btn_GoToLoginPage_Click;
-            this.btn_GoToRegistrationPage.Click += Btn_GoToRegistrationPage_Click;
         }
 
-        private void Btn_GoToRegistrationPage_Click(object sender, RoutedEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.Frame.Navigate(typeof(RegistrationPage));
-        }
-
-        private void Btn_GoToLoginPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(LoginPage));
+            base.OnNavigatedTo(e);
+            await _viewModel.OnNavigatedTo();
         }
     }
 }
