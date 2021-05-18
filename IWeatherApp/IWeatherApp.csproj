@@ -152,8 +152,8 @@
     <Compile Include="Models\StartPageModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="UserServices\UserService.cs" />
-    <Compile Include="Views\WeatherDataPage.xaml.cs">
-      <DependentUpon>WeatherDataPage.xaml</DependentUpon>
+    <Compile Include="Views\WeatherForecastPage.xaml.cs">
+      <DependentUpon>WeatherForecastPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +195,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WeatherDataPage.xaml">
+    <Page Include="Views\WeatherForecastPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

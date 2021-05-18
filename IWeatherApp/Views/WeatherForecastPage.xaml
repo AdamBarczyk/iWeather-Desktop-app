@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="IWeatherApp.Views.WeatherDataPage"
+    x:Class="IWeatherApp.Views.WeatherForecastPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:IWeatherApp"

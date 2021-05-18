@@ -54,7 +54,7 @@ namespace IWeatherApp
             if (_loginService.IsSignedIn)
             {
                 Frame navigationFrame = Window.Current.Content as Frame;
-                navigationFrame.Navigate(typeof(WeatherDataPage));
+                navigationFrame.Navigate(typeof(WeatherForecastPage));
             }
             else
             {
