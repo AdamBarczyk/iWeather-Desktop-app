@@ -123,9 +123,9 @@
     <Compile Include="Constants\Credentials.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="GeolocalizationApi\Geolocalizator.cs" />
-    <Compile Include="Models\LoginPageModel.cs" />
-    <Compile Include="Models\RegistrationPageModel.cs" />
-    <Compile Include="Models\WeatherDataPageModel.cs" />
+    <Compile Include="Models\LoginService.cs" />
+    <Compile Include="Models\RegistrationService.cs" />
+    <Compile Include="Models\WeatherForecastService.cs" />
     <Compile Include="OpenWeatherApi\Clouds.cs" />
     <Compile Include="OpenWeatherApi\Coord.cs" />
     <Compile Include="OpenWeatherApi\Main.cs" />

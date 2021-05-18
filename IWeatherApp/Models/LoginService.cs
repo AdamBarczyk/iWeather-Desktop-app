@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IWeatherApp
 {
-    class LoginPageModel
+    class LoginService
     {
         private string email;
         private string password;
@@ -17,7 +17,7 @@ namespace IWeatherApp
             set { _isSignedIn = value; }
         }
 
-        public LoginPageModel(string email, string password)
+        public LoginService(string email, string password)
         {
             this.email = email;
             this.password = password;

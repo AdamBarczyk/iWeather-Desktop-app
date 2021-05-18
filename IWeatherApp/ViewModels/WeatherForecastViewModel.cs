@@ -10,7 +10,7 @@ namespace IWeatherApp
 {
     class WeatherForecastViewModel : MainViewModelBase
     {
-        WeatherDataPageModel _model = null;
+        WeatherForecastService _weatherForecastServicel = null;
 
         #region Properties
         private string _searchString;
@@ -88,22 +88,22 @@ namespace IWeatherApp
 
         public async Task SearchCity()
         {
-            if (_model == null)
+            if (_weatherForecastServicel == null)
             {
-                _model = new WeatherDataPageModel();
+                _weatherForecastServicel = new WeatherForecastService();
             }
 
             // update the model
-            await _model.LoadWeatherData(SearchString);
+            await _weatherForecastServicel.LoadWeatherData(SearchString);
 
             PushDataToTheView();
         }
 
         private async Task LoadWeatherForCurrentLocation()
         {
-            if(_model == null)
+            if(_weatherForecastServicel == null)
             {
-                _model = new WeatherDataPageModel();
+                _weatherForecastServicel = new WeatherForecastService();
             }
 
             Geolocalizator _geolocalizator = new Geolocalizator();
@@ -112,7 +112,7 @@ namespace IWeatherApp
             string city = await _geolocalizator.GetLocationAsync(); 
 
             // update the model
-            await _model.LoadWeatherData(city);
+            await _weatherForecastServicel.LoadWeatherData(city);
 
             PushDataToTheView();
         }
@@ -124,16 +124,16 @@ namespace IWeatherApp
 
         private void PushDataToTheView()
         {
-            CityName = _model.CityName;
-            Description = _model.Description;
-            MainTemp = _model.MainTemp.ToString() + Constants.CelsiusDegree;
-            FeelTemp = _model.FeelTemp.ToString() + Constants.CelsiusDegree;
-            MinTemp = _model.MinTemp.ToString() + Constants.CelsiusDegree;
-            MaxTemp = _model.MaxTemp.ToString() + Constants.CelsiusDegree;
-            Pressure = _model.Pressure.ToString() + Constants.PressureUnit;
-            Humidity = _model.Humidity.ToString() + Constants.PercentSymbol;
-            Wind = _model.Wind.ToString() + Constants.SpeedUnit;
-            WeatherIconPath = Constants.WeatherIconPathPart1 + _model.WeatherIconName + Constants.WeatherIconPathPart2;
+            CityName = _weatherForecastServicel.CityName;
+            Description = _weatherForecastServicel.Description;
+            MainTemp = _weatherForecastServicel.MainTemp.ToString() + Constants.CelsiusDegree;
+            FeelTemp = _weatherForecastServicel.FeelTemp.ToString() + Constants.CelsiusDegree;
+            MinTemp = _weatherForecastServicel.MinTemp.ToString() + Constants.CelsiusDegree;
+            MaxTemp = _weatherForecastServicel.MaxTemp.ToString() + Constants.CelsiusDegree;
+            Pressure = _weatherForecastServicel.Pressure.ToString() + Constants.PressureUnit;
+            Humidity = _weatherForecastServicel.Humidity.ToString() + Constants.PercentSymbol;
+            Wind = _weatherForecastServicel.Wind.ToString() + Constants.SpeedUnit;
+            WeatherIconPath = Constants.WeatherIconPathPart1 + _weatherForecastServicel.WeatherIconName + Constants.WeatherIconPathPart2;
         }
     }
 }

@@ -7,7 +7,7 @@ using Windows.UI.Popups;
 
 namespace IWeatherApp
 {
-    class WeatherDataPageModel
+    class WeatherForecastService
     {
         public string CityName { get; set; }
         public string Description { get; set; }

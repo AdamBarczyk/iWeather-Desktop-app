@@ -13,7 +13,7 @@ namespace IWeatherApp
 {
     class LoginViewModel : MainViewModelBase
     {
-        private LoginPageModel _model = null;
+        private LoginService _loginService = null;
 
         #region Properties
         private string _email;
@@ -46,19 +46,19 @@ namespace IWeatherApp
 
         public async void SignInUser()
         {
-            _model = new LoginPageModel(Email, Password);
+            _loginService = new LoginService(Email, Password);
 
             // start login process
-            await _model.SignInUserAsync();
+            await _loginService.SignInUserAsync();
 
-            if (_model.IsSignedIn)
+            if (_loginService.IsSignedIn)
             {
                 Frame navigationFrame = Window.Current.Content as Frame;
                 navigationFrame.Navigate(typeof(WeatherDataPage));
             }
             else
             {
-                ErrorMessage = _model.ShowError();
+                ErrorMessage = _loginService.ShowError();
             }
 
             //OpenWeatherMapApiHelper apiHelper = new OpenWeatherMapApiHelper();

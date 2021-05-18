@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IWeatherApp.Models
 {
-    class RegistrationPageModel
+    class RegistrationService
     {
     }
 }
