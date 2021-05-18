@@ -8,9 +8,9 @@
     mc:Ignorable="d"
     Background="White">
 
-    <Page.DataContext>
-        <local:StartPageViewModel/>
-    </Page.DataContext>
+    <!--<Page.DataContext>
+        <local:StartViewModel/>
+    </Page.DataContext>-->
 
     <!-- Grid for all content on the page -->
     <Grid

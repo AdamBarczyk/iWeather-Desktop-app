@@ -8,7 +8,7 @@ using Windows.UI.Popups;
 
 namespace IWeatherApp
 {
-    class WeatherDataPageViewModel : MainViewModelBase
+    class WeatherForecastViewModel : MainViewModelBase
     {
         WeatherDataPageModel _model = null;
 
@@ -99,7 +99,6 @@ namespace IWeatherApp
             PushDataToTheView();
         }
 
-        // NIE DZIAŁA WCZYTYWANIE POGODY DLA AKTUALNEJ POZYCJI PO ZALOGOWANIU
         private async Task LoadWeatherForCurrentLocation()
         {
             if(_model == null)

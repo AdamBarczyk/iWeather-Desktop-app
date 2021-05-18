@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace IWeatherApp
 {
-    class StartPageViewModel : MainViewModelBase
+    class StartViewModel : MainViewModelBase
     {
         private StartPageModel _model = null;
         private string _cityLabel = "Your City";

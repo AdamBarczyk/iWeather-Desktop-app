@@ -22,10 +22,10 @@ namespace IWeatherApp.Views
     /// </summary>
     public sealed partial class WeatherDataPage : Page
     {
-        private readonly WeatherDataPageViewModel _weatherDataPageViewModel;
+        private readonly WeatherForecastViewModel _weatherDataPageViewModel;
         public WeatherDataPage()
         {
-            this.DataContext = _weatherDataPageViewModel = new WeatherDataPageViewModel();
+            this.DataContext = _weatherDataPageViewModel = new WeatherForecastViewModel();
             this.InitializeComponent();
         }
 

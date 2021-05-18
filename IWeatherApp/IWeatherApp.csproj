@@ -135,9 +135,9 @@
     <Compile Include="OpenWeatherApi\Wind.cs" />
     <Compile Include="Utilities\HttpClientFactory.cs" />
     <Compile Include="OpenWeatherApi\OpenWeatherMapApiHelper.cs" />
-    <Compile Include="ViewModels\LoginPageViewModel.cs" />
-    <Compile Include="ViewModels\RegistrationPageViewModel.cs" />
-    <Compile Include="ViewModels\WeatherDataPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <Compile Include="ViewModels\WeatherForecastViewModel.cs" />
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -150,7 +150,7 @@
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\StartPageModel.cs" />
-    <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="UserServices\UserService.cs" />
     <Compile Include="Views\WeatherDataPage.xaml.cs">
       <DependentUpon>WeatherDataPage.xaml</DependentUpon>

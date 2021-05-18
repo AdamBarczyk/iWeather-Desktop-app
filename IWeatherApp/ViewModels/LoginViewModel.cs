@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace IWeatherApp
 {
-    class LoginPageViewModel : MainViewModelBase
+    class LoginViewModel : MainViewModelBase
     {
         private LoginPageModel _model = null;
 
@@ -54,7 +54,7 @@ namespace IWeatherApp
             if (_model.IsSignedIn)
             {
                 Frame navigationFrame = Window.Current.Content as Frame;
-                bool success = navigationFrame.Navigate(typeof(WeatherDataPage));
+                navigationFrame.Navigate(typeof(WeatherDataPage));
             }
             else
             {

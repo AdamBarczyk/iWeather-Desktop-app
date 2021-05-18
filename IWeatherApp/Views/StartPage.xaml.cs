@@ -22,8 +22,12 @@ namespace IWeatherApp
     /// </summary>
     public sealed partial class StartPage : Page
     {
+
+        private readonly StartViewModel _viewModel;
         public StartPage()
         {
+            this.DataContext = _viewModel = new StartViewModel();
+
             this.InitializeComponent();
 
             this.btn_GoToLoginPage.Click += Btn_GoToLoginPage_Click;
