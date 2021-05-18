@@ -22,17 +22,17 @@ namespace IWeatherApp.Views
     /// </summary>
     public sealed partial class WeatherDataPage : Page
     {
-        private readonly WeatherForecastViewModel _weatherDataPageViewModel;
+        private readonly WeatherForecastViewModel _viewModel;
         public WeatherDataPage()
         {
-            this.DataContext = _weatherDataPageViewModel = new WeatherForecastViewModel();
+            this.DataContext = _viewModel = new WeatherForecastViewModel();
             this.InitializeComponent();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            await _weatherDataPageViewModel.OnNavigatedTo();
+            await _viewModel.OnNavigatedTo();
         }
     }
 }

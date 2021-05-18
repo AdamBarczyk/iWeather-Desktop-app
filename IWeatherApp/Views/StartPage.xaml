@@ -128,7 +128,7 @@
 
             <TextBlock 
                 Grid.Row="0"
-                Text="{Binding CityLabel, Mode=TwoWay}"
+                Text="{Binding CityName}"
                 FontWeight="Bold"
                 FontSize="30"
                 Foreground="#2A5261"
@@ -137,7 +137,7 @@
 
             <TextBlock
                 Grid.Row="1"
-                Text="Sunny"
+                Text="{Binding Description}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="#2A5261"
@@ -149,13 +149,13 @@
                 Grid.Row="2"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                Source="https://openweathermap.org/img/wn/01d@2x.png"/>
+                Source="{Binding WeatherIconPath}"/>
 
             <TextBlock 
                 Grid.Row="3"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Text="23 °C"
+                Text="{Binding MainTemp}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="#2A5261"
@@ -207,7 +207,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="20 °C"
+                        Text="{Binding FeelTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -243,7 +243,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="21 °C"
+                        Text="{Binding MinTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -279,7 +279,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="25 °C"
+                        Text="{Binding MaxTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -315,7 +315,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="1003 hPa"
+                        Text="{Binding Pressure}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -351,7 +351,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="87%"
+                        Text="{Binding Humidity}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -387,7 +387,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="5 km/h"
+                        Text="{Binding Wind}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
