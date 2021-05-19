@@ -77,9 +77,19 @@ namespace IWeatherApp
         /// <summary>
         /// Gets api response for 7 days weather forecast and converts it into JSON object
         /// </summary>
-        private async Task Get7DaysForecast(int[] coords)
+        private async Task Get7DaysForecast()
         {
-            string uri = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+            string uri = "https://api.openweathermap.org/data/2.5/onecall?lat=" + _currentForecast.coord.lat + "&lon=" + _currentForecast.coord.lon + 
+                "&exclude=current,minutely,hourly&appid=" + Credentials.OpenWeatherMapApiKey;
+            try
+            {
+                _7DaysApiResponse = await _httpClient.GetStringAsync(uri);
+                
+            }
+            catch (HttpRequestException e)
+            {
+                await new MessageDialog(e.Message).ShowAsync();
+            }
         }
 
         private void AssignCurrentWeatherData()
