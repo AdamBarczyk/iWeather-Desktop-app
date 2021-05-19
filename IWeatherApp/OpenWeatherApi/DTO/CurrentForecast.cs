@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Root
+public class CurrentForecast
     {
         public Coord coord { get; set; }
         public List<Weather> weather { get; set; }

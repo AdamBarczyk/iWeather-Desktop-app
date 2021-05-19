@@ -126,13 +126,13 @@
     <Compile Include="Models\LoginService.cs" />
     <Compile Include="Models\RegistrationService.cs" />
     <Compile Include="Models\WeatherForecastService.cs" />
-    <Compile Include="OpenWeatherApi\Clouds.cs" />
-    <Compile Include="OpenWeatherApi\Coord.cs" />
-    <Compile Include="OpenWeatherApi\Main.cs" />
-    <Compile Include="OpenWeatherApi\Root.cs" />
-    <Compile Include="OpenWeatherApi\Sys.cs" />
-    <Compile Include="OpenWeatherApi\Weather.cs" />
-    <Compile Include="OpenWeatherApi\Wind.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Clouds.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Coord.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Main.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Root.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Sys.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Weather.cs" />
+    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Wind.cs" />
     <Compile Include="Utilities\HttpClientFactory.cs" />
     <Compile Include="OpenWeatherApi\OpenWeatherMapApiHelper.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -216,7 +216,9 @@
   <ItemGroup>
     <PRIResource Include="Strings\pl-PL\Resources.resw" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="OpenWeatherApi\DeserializedJSON\7DaysForecast\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
