@@ -12,8 +12,9 @@ namespace IWeatherApp
     class OpenWeatherMapApiHelper
     {
         private HttpClient _httpClient;
-        private string _apiResponse;
-        Root _apiData;
+        private string _currentApiResponse;
+        private string _7DaysApiResponse;
+        Root _currentForecast;
 
         #region weather data properties
         private string _cityName;
@@ -48,44 +49,54 @@ namespace IWeatherApp
 
         public async Task GetCityWeatherData(string cityName)
         {
-            // get response from API
-            string uri = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + Credentials.OpenWeatherMapApiKey;
-            try
-            {
-                _apiResponse = await _httpClient.GetStringAsync(uri);
-            } 
-            catch (HttpRequestException e)
-            {
-                await new MessageDialog(e.Message).ShowAsync();
-            }
+            await GetCurrentForecast(cityName);
 
-
-            DeserializeJSON();
-            AssignWeatherData();
+            AssignCurrentWeatherData();
 
             //await new MessageDialog(Description + "\n" + MainTemp + "\n" + FeelTemp + "\n" + MinTemp + "\n" + MaxTemp + "\n" + Pressure + "\n" + Humidity + "\n" + Wind + "\n" + CityId + "\n" + WeatherIcon).ShowAsync();
         }
 
-        private void DeserializeJSON()
+        /// <summary>
+        /// Gets api response for current weather forecast and converts it into JSON object
+        /// </summary>
+        private async Task GetCurrentForecast(string cityName)
         {
-            _apiData = JsonConvert.DeserializeObject<Root>(_apiResponse);
-        } 
+            // get response from API for current weather forecast
+            string uri = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + Credentials.OpenWeatherMapApiKey;
+            try
+            {
+                _currentApiResponse = await _httpClient.GetStringAsync(uri);
+                _currentForecast = JsonConvert.DeserializeObject<Root>(_currentApiResponse);
+            }
+            catch (HttpRequestException e)
+            {
+                await new MessageDialog(e.Message).ShowAsync();
+            }
+        }
 
-        private void AssignWeatherData()
+        /// <summary>
+        /// Gets api response for 7 days weather forecast and converts it into JSON object
+        /// </summary>
+        private async Task Get7DaysForecast(int[] coords)
+        {
+            string uri = "https://api.openweathermap.org/data/2.5/onecall?lat=";
+        }
+
+        private void AssignCurrentWeatherData()
         {
             // get info about the current weather
 
-            CityName = _apiData.name;
-            Description = _apiData.weather[0].description;
-            MainTemp = _apiData.main.temp;
-            FeelTemp = _apiData.main.feels_like;
-            MinTemp = _apiData.main.temp_min;
-            MaxTemp = _apiData.main.temp_max;
-            Pressure = _apiData.main.pressure;
-            Humidity = _apiData.main.humidity;
-            Wind = _apiData.wind.speed;
-            CityId = _apiData.id;
-            WeatherIconName = _apiData.weather[0].icon;
+            CityName = _currentForecast.name;
+            Description = _currentForecast.weather[0].description;
+            MainTemp = _currentForecast.main.temp;
+            FeelTemp = _currentForecast.main.feels_like;
+            MinTemp = _currentForecast.main.temp_min;
+            MaxTemp = _currentForecast.main.temp_max;
+            Pressure = _currentForecast.main.pressure;
+            Humidity = _currentForecast.main.humidity;
+            Wind = _currentForecast.wind.speed;
+            CityId = _currentForecast.id;
+            WeatherIconName = _currentForecast.weather[0].icon;
         }
     }
 }

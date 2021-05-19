@@ -30,6 +30,20 @@ namespace IWeatherApp
             get { return _isRegistrationSucceeded; }
             set { _isRegistrationSucceeded = value; }
         }
+
+        //// This stores the users token etc. Via this property the other viewmodels can access user information (NOT PASSWORD)
+        //// The reason why this is not named UserModel is because this deserializes from FirebaseAuthLink, therefor authModel
+        //private AuthModel _currentUser;
+        //public AuthModel CurrentUser
+        //{
+        //    get => _currentUser;
+
+        //    set
+        //    {
+        //        _currentUser = value;
+        //        OnCurrentUserChanged();
+        //    }
+        //}
         #endregion
 
         #region Constructor
