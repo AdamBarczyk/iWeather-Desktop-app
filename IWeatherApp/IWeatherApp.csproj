@@ -126,13 +126,18 @@
     <Compile Include="Models\LoginService.cs" />
     <Compile Include="Models\RegistrationService.cs" />
     <Compile Include="Models\WeatherForecastService.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Clouds.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Coord.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Main.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Root.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Sys.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Weather.cs" />
-    <Compile Include="OpenWeatherApi\DeserializedJSON\CurrentForecast\Wind.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Alert.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Daily.cs" />
+    <Compile Include="OpenWeatherApi\DTO\FeelsLike.cs" />
+    <Compile Include="OpenWeatherApi\DTO\SevenDaysForecast.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Temp.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Clouds.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Coord.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Main.cs" />
+    <Compile Include="OpenWeatherApi\DTO\CurrentForecast.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Sys.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Weather.cs" />
+    <Compile Include="OpenWeatherApi\DTO\Wind.cs" />
     <Compile Include="Utilities\HttpClientFactory.cs" />
     <Compile Include="OpenWeatherApi\OpenWeatherMapApiHelper.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -216,9 +221,7 @@
   <ItemGroup>
     <PRIResource Include="Strings\pl-PL\Resources.resw" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="OpenWeatherApi\DeserializedJSON\7DaysForecast\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

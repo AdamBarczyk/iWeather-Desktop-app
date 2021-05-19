@@ -1,4 +1,6 @@
-    public class Alert
+using System.Collections.Generic;
+
+public class Alert
     {
         public string sender_name { get; set; }
         public string @event { get; set; }

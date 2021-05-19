@@ -131,9 +131,9 @@ namespace IWeatherApp
 
             for (int i=0; i<7; i++)
             {
-                SevenDaysForecastDate[i] = ConvertTimestampToDate(_sevenDaysForecast.daily[i+1].dt);
+                SevenDaysForecastDate[i] = ConvertTimestampToDate(_sevenDaysForecast.daily[i + 1].dt);
                 SevenDaysForecastTemp[i] = _sevenDaysForecast.daily[i + 1].temp.day;
-                SevenDaysForecastWeatherIconName[i] = _sevenDaysForecast.daily[i + 1].weather.icon;
+                SevenDaysForecastWeatherIconName[i] = _sevenDaysForecast.daily[i + 1].weather[i + 1].icon;
             }
         }
 

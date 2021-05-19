@@ -1,4 +1,6 @@
-    public class Daily
+using System.Collections.Generic;
+
+public class Daily
     {
         public int dt { get; set; }
         public int sunrise { get; set; }

@@ -25,11 +25,10 @@ namespace IWeatherApp
 
         public async Task SignInUserAsync()
         {
-            UserService userService = new UserService();
-            await userService.SignInUser(email, password);
+            await UserService.Singleton.SignInUser(email, password);
 
             // pass _isSignedIn status from userService to this Model
-            IsSignedIn = userService.IsSignedIn;
+            IsSignedIn = UserService.Singleton.IsSignedIn;
         }
 
         public string ShowError()

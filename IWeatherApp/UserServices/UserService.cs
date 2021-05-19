@@ -31,25 +31,27 @@ namespace IWeatherApp
             set { _isRegistrationSucceeded = value; }
         }
 
-        //// This stores the users token etc. Via this property the other viewmodels can access user information (NOT PASSWORD)
-        //// The reason why this is not named UserModel is because this deserializes from FirebaseAuthLink, therefor authModel
-        //private AuthModel _currentUser;
-        //public AuthModel CurrentUser
-        //{
-        //    get => _currentUser;
-
-        //    set
-        //    {
-        //        _currentUser = value;
-        //        OnCurrentUserChanged();
-        //    }
-        //}
+        private FirebaseAuthLink _userData;
+        public FirebaseAuthLink UserData => IsSignedIn ? _userData : null;
         #endregion
 
         #region Constructor
         public UserService() { 
         }
         #endregion
+
+        private static UserService _userService;
+        public static UserService Singleton 
+        {
+           get
+           {
+                if (_userService is null)
+                {
+                    _userService = new UserService();
+                }
+                return _userService;
+           }
+        }
 
         public async Task SignInUser(string email, string password)
         {
@@ -58,10 +60,10 @@ namespace IWeatherApp
             try
             {
                 // Store and sign in user with email and password
-                FirebaseAuthLink userData = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
+                _userData = await authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
                 // Refresh user token as it needs to be valid always
-                await userData.GetFreshAuthAsync();
+                await _userData.GetFreshAuthAsync();
 
                 // Set signed in state to true
                 IsSignedIn = true;
@@ -73,6 +75,12 @@ namespace IWeatherApp
 
                 new MessageDialog(e.Message);
             }
+        }
+
+        public void SignOutUser()
+        {
+            _userData = null;
+            IsSignedIn = false;
         }
 
         public async Task CreateAccount(string email, string password)

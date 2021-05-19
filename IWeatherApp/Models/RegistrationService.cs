@@ -25,11 +25,10 @@ namespace IWeatherApp.Models
 
         public async Task SignUpUserAsync()
         {
-            UserService _userService = new UserService();
-            await _userService.CreateAccount(_email, _password);
+            await UserService.Singleton.CreateAccount(_email, _password);
 
             // pass IsRegistrationSucceeded status from userService to this Model
-            IsRegistrationSucceeded = _userService.IsRegistrationSucceeded;
+            IsRegistrationSucceeded = UserService.Singleton.IsRegistrationSucceeded;
         }
     }
 }
