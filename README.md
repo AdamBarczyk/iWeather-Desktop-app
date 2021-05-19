@@ -1,12 +1,13 @@
 # IWeather desktop app
 
-Weather desktop app with Firebase database
+Weather desktop app with Firebase database and weather api (https://openweathermap.org/api)
 
 ## Technologies
 
 * C#
 * UWP (Universal Windows Platform)
 * Google Firebase 
+* MVVM Pattern
 
 ## Usage
 Desktop app that shows weather in current location based on IP address.
