@@ -8,10 +8,6 @@
     mc:Ignorable="d"
     Background="White">
 
-    <!--<Page.DataContext>
-        <local:StartViewModel/>
-    </Page.DataContext>-->
-
     <!-- Grid for all content on the page -->
     <Grid
         RowSpacing="30">
@@ -33,34 +29,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
-        <!-- tmp Grid for testing bindings --><!--
-        <Grid Grid.Column="1"
-              Grid.Row="0">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <TextBox Grid.Row="0"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     Width="400"
-                     Text="{Binding CityInput, Mode=TwoWay}"
-                     FontSize="40"/>
-
-            <Button Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    Content="Zmien nazwe miasta"
-                    FontWeight="Bold"
-                    Foreground="Red"
-                    FontSize="40"
-                    Background="Black"
-                    Command="{Binding OkButtonClicked}"/>
-
-        </Grid>-->
 
         <!-- Grid for login/registration controls -->
         <Grid

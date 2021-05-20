@@ -23,14 +23,34 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" MinHeight="55" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <!-- Grid for the app logo -->
+        <!-- Grid for login/registration controls -->
+        <Grid
+            Grid.Column="2"
+            Grid.Row="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="10, 10, 10, 0"
+            ColumnSpacing="10">
+
+            <Button x:Name="btn_GoToRegistrationPage"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Content="Sign Out" 
+                    Background="#f8d06c"
+                    Foreground="#2A5261"
+                    VerticalAlignment="Top"
+                    Command="{Binding SignOutButtonClicked}"/>
+
+        </Grid>
+        
+        <!-- Grid for the search bar -->
         <Grid
             Grid.Column="1"
             Grid.Row="1"
@@ -62,7 +82,8 @@
 
         </Grid>
 
-        <!-- Grid for weather data from weather API of the current host location (based on IP address) -->
+        <!-- Grid for weather data from weather API of the current host location (based on IP address)
+        or based on city name provided by user via search bar -->
         <Grid
             Grid.Column="1"
             Grid.Row="2"
@@ -103,8 +124,6 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 Source="{Binding WeatherIconPath}"/>
-
-            <!--Source="../Assets\img\partly_cloudy.png"-->
 
             <TextBlock 
                 Grid.Row="3"
@@ -380,9 +399,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -424,9 +443,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -468,9 +487,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -512,9 +531,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -556,9 +575,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -600,9 +619,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -644,9 +663,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="9*" />
-                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 

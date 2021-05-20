@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace IWeatherApp
 {
@@ -228,9 +230,36 @@ namespace IWeatherApp
         }
         #endregion
 
+        #region Navigation
+        public ICommand SignOutButtonClicked
+        {
+            get { return new DelegateCommand( () => SignOutUser() ); }
+        }
+
+        private void NavigateToStartPage()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(StartPage));
+        }
+        #endregion
+
         public ICommand SearchButtonClicked
         {
             get { return new DelegateCommand(async () => await SearchCity()); }
+        }
+
+        /// <summary>
+        /// method called when this page is loading
+        /// </summary>
+        public async Task OnNavigatedTo()
+        {
+            await LoadWeatherForCurrentLocation();
+        }
+
+        private void SignOutUser()
+        {
+            UserService.Singleton.SignOutUser();
+            NavigateToStartPage();
         }
 
         public async Task SearchCity()
@@ -262,14 +291,6 @@ namespace IWeatherApp
             await _weatherForecastService.LoadWeatherData(city);
 
             PushDataToTheView();
-        }
-
-        /// <summary>
-        /// method called when this page is loading
-        /// </summary>
-        public async Task OnNavigatedTo()
-        {
-            await LoadWeatherForCurrentLocation();
         }
 
         private void PushDataToTheView()

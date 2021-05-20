@@ -224,24 +224,24 @@ namespace IWeatherApp
         }
         #endregion
 
-        #region navigation
+        #region Navigation
         public ICommand ChangeToLoginPageButtonClicked
         {
-            get { return new DelegateCommand(ChangeToLoginPage); }
+            get { return new DelegateCommand(NavigateToLoginPage); }
         }
 
         public ICommand ChangeToRegistrationPageButtonClicked
         {
-            get { return new DelegateCommand(ChangeToRegistrationPage); }
+            get { return new DelegateCommand(NavigateToRegistrationPage); }
         }
 
-        private void ChangeToLoginPage()
+        private void NavigateToLoginPage()
         {
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(LoginPage));
         }
 
-        private void ChangeToRegistrationPage()
+        private void NavigateToRegistrationPage()
         {
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(RegistrationPage));
