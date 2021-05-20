@@ -40,7 +40,12 @@ namespace IWeatherApp
         }
         #endregion
 
+
         private static UserService _userService;
+        /// <summary>
+        /// make sure that there will always be at most one instance of this class active in the app, 
+        /// because instance of this class stores data about user logged into firebase database
+        /// </summary>
         public static UserService Singleton 
         {
            get

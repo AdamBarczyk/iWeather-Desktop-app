@@ -90,7 +90,7 @@
 
             <TextBlock
                 Grid.Row="1"
-                Text="{Binding Description, Mode=TwoWay}"
+                Text="{Binding Description}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="#2A5261"
@@ -110,7 +110,7 @@
                 Grid.Row="3"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Text="{Binding MainTemp, Mode=TwoWay}"
+                Text="{Binding MainTemp}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="#2A5261"
@@ -162,7 +162,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="{Binding FeelTemp, Mode=TwoWay}"
+                        Text="{Binding FeelTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -198,7 +198,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="{Binding MinTemp, Mode=TwoWay}"
+                        Text="{Binding MinTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -234,7 +234,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,20,0"
-                        Text="{Binding MaxTemp, Mode=TwoWay}"
+                        Text="{Binding MaxTemp}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -270,7 +270,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="{Binding Pressure, Mode=TwoWay}"
+                        Text="{Binding Pressure}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -306,7 +306,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="{Binding Humidity, Mode=TwoWay}"
+                        Text="{Binding Humidity}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -342,7 +342,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="10,0,0,0"
-                        Text="{Binding Wind, Mode=TwoWay}"
+                        Text="{Binding Wind}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -380,9 +380,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -390,7 +390,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay1}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -400,14 +400,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay1}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay1}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -424,9 +424,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -434,7 +434,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay2}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -444,14 +444,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay2}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay2}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -468,9 +468,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -478,7 +478,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay3}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -488,14 +488,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay3}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay3}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -512,9 +512,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -522,7 +522,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay4}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -532,14 +532,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay4}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay4}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -556,9 +556,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -566,7 +566,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay5}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -576,14 +576,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay5}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay5}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -600,9 +600,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -610,7 +610,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay6}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -620,14 +620,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay6}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay6}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -644,9 +644,9 @@
                     BorderThickness="0.5">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="9*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
 
                 <TextBlock 
@@ -654,7 +654,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay7}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -664,14 +664,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay7}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay7}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"

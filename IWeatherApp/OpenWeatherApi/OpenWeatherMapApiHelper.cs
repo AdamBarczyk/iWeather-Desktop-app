@@ -18,34 +18,23 @@ namespace IWeatherApp
         SevenDaysForecast _sevenDaysForecast;
 
         #region current weather data properties
-        private string _cityName;
         public string CityName { get; set; }
-        private string _description;
         public string Description { get; set; }
-        private double _mainTemp;
         public double MainTemp { get; set; }
-        private double _feelTemp;
         public double FeelTemp { get; set; }
-        private double _minTemp;
         public double MinTemp { get; set; }
-        private double _maxTemp;
         public double MaxTemp { get; set; }
-        private double _pressure;
         public double Pressure { get; set; }
-        private double _humidity;
         public double Humidity { get; set; }
-        private double _wind;
         public double Wind { get; set; }
-        private int _cityId;
         public int CityId { get; set; }
-        private string _weatherIconName;
         public string WeatherIconName { get; set; }
         #endregion
 
         #region Seven days weather data properties
-        public string[] SevenDaysForecastDate { get; set; }
-        public string[] SevenDaysForecastWeatherIconName { get; set; }
-        public double[] SevenDaysForecastTemp { get; set; }
+        public string[] SevenDaysForecastDates { get; set; }
+        public string[] SevenDaysForecastWeatherIconNames { get; set; }
+        public double[] SevenDaysForecastTemps { get; set; }
         #endregion
 
         public OpenWeatherMapApiHelper()
@@ -60,6 +49,7 @@ namespace IWeatherApp
             await Get7DaysForecast();
 
             AssignCurrentWeatherData();
+            AssignSevenDaysWeatherData();
         }
 
         /// <summary>
@@ -86,7 +76,7 @@ namespace IWeatherApp
         private async Task Get7DaysForecast()
         {
             string uri = "https://api.openweathermap.org/data/2.5/onecall?lat=" + _currentForecast.coord.lat + "&lon=" + _currentForecast.coord.lon + 
-                "&exclude=current,minutely,hourly&appid=" + Credentials.OpenWeatherMapApiKey;
+                "&exclude=current,minutely,hourly&units=metric&appid=" + Credentials.OpenWeatherMapApiKey;
             try
             {
                 _7DaysApiResponse = await _httpClient.GetStringAsync(uri);
@@ -125,15 +115,15 @@ namespace IWeatherApp
         private void AssignSevenDaysWeatherData()
         {
             // get info about the 7days weather
-            SevenDaysForecastDate = new string[7];
-            SevenDaysForecastTemp = new double[7];
-            SevenDaysForecastWeatherIconName = new string[7];
+            SevenDaysForecastDates = new string[7];
+            SevenDaysForecastTemps = new double[7];
+            SevenDaysForecastWeatherIconNames = new string[7];
 
             for (int i=0; i<7; i++)
             {
-                SevenDaysForecastDate[i] = ConvertTimestampToDate(_sevenDaysForecast.daily[i + 1].dt);
-                SevenDaysForecastTemp[i] = _sevenDaysForecast.daily[i + 1].temp.day;
-                SevenDaysForecastWeatherIconName[i] = _sevenDaysForecast.daily[i + 1].weather[i + 1].icon;
+                SevenDaysForecastDates[i] = ConvertTimestampToDate(_sevenDaysForecast.daily[i + 1].dt);
+                SevenDaysForecastTemps[i] = _sevenDaysForecast.daily[i + 1].temp.day;
+                SevenDaysForecastWeatherIconNames[i] = _sevenDaysForecast.daily[i + 1].weather[0].icon;
             }
         }
 

@@ -437,7 +437,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay1}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -447,14 +447,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay1}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay1}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -481,7 +481,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay2}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -491,14 +491,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay2}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay2}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -525,7 +525,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay3}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -535,14 +535,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay3}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay3}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -569,7 +569,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay4}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -579,14 +579,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay4}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay4}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -613,7 +613,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay5}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -623,14 +623,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay5}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay5}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -657,7 +657,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay6}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -667,14 +667,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay6}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay6}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -701,7 +701,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="19/10/2021"
+                        Text="{Binding DateDay7}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
@@ -711,14 +711,14 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Source="../Assets\img\partly_cloudy.png"/>
+                        Source="{Binding WeatherIconPathDay7}"/>
 
                 <TextBlock 
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="10,0,10,0"
-                        Text="20 °C"
+                        Text="{Binding TempDay7}"
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="#2A5261"
