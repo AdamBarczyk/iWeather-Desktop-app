@@ -122,6 +122,7 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\Credentials.cs" />
     <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Firebase\FirebaseHelper.cs" />
     <Compile Include="GeolocalizationApi\Geolocalizator.cs" />
     <Compile Include="Models\LoginService.cs" />
     <Compile Include="Models\RegistrationService.cs" />
@@ -140,9 +141,13 @@
     <Compile Include="OpenWeatherApi\DTO\Wind.cs" />
     <Compile Include="Utilities\HttpClientFactory.cs" />
     <Compile Include="OpenWeatherApi\OpenWeatherMapApiHelper.cs" />
+    <Compile Include="ViewModels\FavoritesViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\WeatherForecastViewModel.cs" />
+    <Compile Include="Views\FavoritesPage.xaml.cs">
+      <DependentUpon>FavoritesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -187,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\FavoritesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -207,6 +216,9 @@
   <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net">
       <Version>3.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="FirebaseDatabase.net">
+      <Version>4.0.6</Version>
     </PackageReference>
     <PackageReference Include="IpInfo">
       <Version>1.0.5.2</Version>

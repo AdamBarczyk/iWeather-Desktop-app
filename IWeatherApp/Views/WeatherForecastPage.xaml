@@ -49,7 +49,27 @@
                     Command="{Binding SignOutButtonClicked}"/>
 
         </Grid>
-        
+
+        <!-- Grid for favorites cities button -->
+        <Grid
+            Grid.Column="0"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="10, 10, 10, 0"
+            ColumnSpacing="10">
+
+            <Button x:Name="btn_GoToFavorites"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Content="Favorites cities" 
+                    Background="#f8d06c"
+                    Foreground="#2A5261"
+                    VerticalAlignment="Top"
+                    Command="{Binding FavoritesButtonClicked}"/>
+
+        </Grid>
+
         <!-- Grid for the search bar -->
         <Grid
             Grid.Column="1"

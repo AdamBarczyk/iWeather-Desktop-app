@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IWeatherApp.Views;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -236,11 +237,24 @@ namespace IWeatherApp
             get { return new DelegateCommand( () => SignOutUser() ); }
         }
 
+        public ICommand FavoritesButtonClicked
+        {
+            get { return new DelegateCommand(() => NavigateToFavoritesPage() ); }
+        }
+
         private void NavigateToStartPage()
         {
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(StartPage));
         }
+
+        private void NavigateToFavoritesPage()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(FavoritesPage));
+        }
+
+
         #endregion
 
         public ICommand SearchButtonClicked
@@ -254,6 +268,12 @@ namespace IWeatherApp
         public async Task OnNavigatedTo()
         {
             await LoadWeatherForCurrentLocation();
+
+            // ---------------------------------------
+            FirebaseHelper helper = new FirebaseHelper();
+            await helper.GetFavoritesCities();
+            
+            // ---------------------------------------
         }
 
         private void SignOutUser()

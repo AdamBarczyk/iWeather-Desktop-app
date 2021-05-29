@@ -9,6 +9,7 @@ namespace IWeatherApp
     class Credentials
     {
         public const string FirebaseApiKey = "AIzaSyA8jrAZWUWoSO2rIISo_YAvzxuGPhuumXk";
+        public const string FirebaseURL = "https://weatherapp-e7e37-default-rtdb.europe-west1.firebasedatabase.app/";
         public const string OpenWeatherMapApiKey = "f6785dbf88aab1a3ecaba3da1633ee5f";
         public const string IpInfoApiToken = "7cdbcd5470a217";
     }

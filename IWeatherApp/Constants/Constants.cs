@@ -15,5 +15,10 @@ namespace IWeatherApp
         public static string PressureUnit = " hPa";
         public static string SpeedUnit = " km/h";
         public static string PercentSymbol = "%";
+
+        public static string MaxNumberOfFavoritesCitiesExceededErrorMessage = "You can have up to 5 cities in favorites";
+        public static string CityDoesntExistsInFavoritesErrorMessage = "There is not such city in favorites";
+
+        public static int MaxNumberOfFavoritesCities = 5;
     }
 }

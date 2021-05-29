@@ -70,6 +70,21 @@ namespace IWeatherApp
             }
         }
 
+        private async Task GetCurrentForecast(int cityId)
+        {
+            // get response from API for current weather forecast
+            string uri = "https://api.openweathermap.org/data/2.5/weather?id=" + cityId + "&units=metric&appid=" + Credentials.OpenWeatherMapApiKey;
+            try
+            {
+                _currentApiResponse = await _httpClient.GetStringAsync(uri);
+                _currentForecast = JsonConvert.DeserializeObject<CurrentForecast>(_currentApiResponse);
+            }
+            catch (HttpRequestException e)
+            {
+                await new MessageDialog(e.Message).ShowAsync();
+            }
+        }
+
         /// <summary>
         /// Gets api response for 7 days weather forecast and converts it into JSON object
         /// </summary>
