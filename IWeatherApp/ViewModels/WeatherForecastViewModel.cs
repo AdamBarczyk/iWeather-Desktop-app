@@ -15,6 +15,10 @@ namespace IWeatherApp
     {
         WeatherForecastService _weatherForecastService = null;
 
+        // --------------------------------- Testowanie bindingu listView ---------------------------------
+        public IList<string> Fruits { get; } = new List<string> { "c1", "c2", "c3" };
+        // ------------------------------------------------------------------------------------------------
+
         #region Properties for current weather
         private string _searchString;
         public string SearchString
@@ -269,11 +273,14 @@ namespace IWeatherApp
         {
             await LoadWeatherForCurrentLocation();
 
-            // ---------------------------------------
+            // -------------------------------- TESTOWANIE FIREBASE HELPERA --------------------------------
             FirebaseHelper helper = new FirebaseHelper();
             await helper.GetFavoritesCities();
-            
-            // ---------------------------------------
+            await helper.DeleteCityFromFavorites(helper.Cities[0].Object.id) ;
+            await helper.PutFavoriteCity("city1", 123456);
+            await helper.GetFavoritesCities();
+
+            // ---------------------------------------------------------------------------------------------
         }
 
         private void SignOutUser()
@@ -292,6 +299,7 @@ namespace IWeatherApp
             // update the model
             await _weatherForecastService.LoadWeatherData(SearchString);
 
+            // update the view with data from the model
             PushDataToTheView();
         }
 

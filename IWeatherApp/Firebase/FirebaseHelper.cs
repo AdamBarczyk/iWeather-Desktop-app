@@ -13,8 +13,8 @@ namespace IWeatherApp
 {
     class FirebaseHelper
     {
-        IReadOnlyCollection<FirebaseObject<Favorite>> cities;
-        FirebaseClient firebase;
+        public List<FirebaseObject<Favorite>> Cities { get; set; }
+        private FirebaseClient _firebase;
 
         internal class Favorite
         {
@@ -31,7 +31,7 @@ namespace IWeatherApp
         public FirebaseHelper()
         {
             // create new firebase client based on auth token from currently logged user
-            this.firebase = new FirebaseClient(
+            this._firebase = new FirebaseClient(
                 Credentials.FirebaseURL,
                 new FirebaseOptions
                 {
@@ -52,9 +52,10 @@ namespace IWeatherApp
             string userId = UserService.Singleton.UserData.User.LocalId;
 
             // cities - list of the favorites cities for the current user
-            cities = await firebase.Child(userId).Child("favourites").OrderByKey().OnceAsync<Favorite>();
+            Cities = (List<FirebaseObject<Favorite>>)await _firebase
+                .Child(userId).Child("favourites").OrderByKey().OnceAsync<Favorite>();
             string tmp = "";
-            foreach (var city in cities)
+            foreach (var city in Cities)
             {
                 tmp += $"{city.Object.id} is {city.Object.name} || ";
             }
@@ -69,13 +70,13 @@ namespace IWeatherApp
             // get current list of favorites cities
             await GetFavoritesCities();
 
-            if (cities.Count < Constants.MaxNumberOfFavoritesCities)
+            if (Cities.Count < Constants.MaxNumberOfFavoritesCities)
             {
                 // create new city to add to favorites list
                 Favorite newFavoriteCity = new Favorite(cityName, cityId);
 
                 // add city to favorites
-                await firebase.Child(userId).Child("favourites").Child(cityId.ToString()).PutAsync(newFavoriteCity);
+                await _firebase.Child(userId).Child("favourites").Child(cityId.ToString()).PutAsync(newFavoriteCity);
             }
             else
             {
@@ -92,12 +93,12 @@ namespace IWeatherApp
             await GetFavoritesCities();
 
             // check if given city exists in favorites list
-            foreach (var city in cities)
+            foreach (var city in Cities)
             {
                 if (city.Object.id == cityId)
                 {
                     // delete the city
-                    await firebase.Child(userId).Child("favourites").Child(cityId.ToString()).DeleteAsync();
+                    await _firebase.Child(userId).Child("favourites").Child(cityId.ToString()).DeleteAsync();
 
                     return;  // end task after finding the city
                 }
