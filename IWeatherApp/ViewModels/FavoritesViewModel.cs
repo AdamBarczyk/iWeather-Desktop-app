@@ -28,10 +28,7 @@ namespace IWeatherApp
         #endregion
 
         #region Navigation
-        public ICommand GoBackButtonClicked
-        {
-            get { return new DelegateCommand( () => NavigateToWeatherForecastPage() ); }
-        }
+        public ICommand GoBackButtonClickedCommand { get; }
 
         private void NavigateToWeatherForecastPage()
         {
@@ -40,9 +37,12 @@ namespace IWeatherApp
         }
         #endregion
 
-        public ICommand FavoriteButtonClickedCommand
+        public ICommand FavoriteButtonClickedCommand { get; }
+
+        public FavoritesViewModel()
         {
-            get { return new DelegateCommand(async () => await DeleteCityFromFavorites()); }
+            GoBackButtonClickedCommand = new DelegateCommand( () => NavigateToWeatherForecastPage() );
+            FavoriteButtonClickedCommand = new DelegateCommand(async () => await DeleteCityFromFavorites());
         }
 
         public async Task OnNavigatedTo()

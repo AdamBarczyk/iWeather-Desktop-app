@@ -40,23 +40,28 @@ namespace IWeatherApp
         #endregion
 
         #region Navigation
-        public ICommand CancelButtonClicked { get; }
+        public ICommand CancelButtonClickedCommand { get; }
+        public ICommand GoBackButtonClickedCommand { get; }
+        public ICommand LoginButtonClickedCommand { get; }
 
         private void CancelRegistration()
         {
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(RegistrationPage));
         }
+
+        private void GoBackToStartPage()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(StartPage));
+        }
         #endregion
 
         public LoginViewModel()
         {
-            CancelButtonClicked = new DelegateCommand( CancelRegistration );
-        }
-
-        public ICommand LoginButtonClicked
-        {
-            get { return new DelegateCommand(SignInUser); }
+            CancelButtonClickedCommand = new DelegateCommand(CancelRegistration);
+            GoBackButtonClickedCommand = new DelegateCommand(GoBackToStartPage);
+            LoginButtonClickedCommand = new DelegateCommand(SignInUser);
         }
 
         private async void SignInUser()

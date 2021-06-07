@@ -225,15 +225,9 @@ namespace IWeatherApp
         #endregion
 
         #region Navigation
-        public ICommand ChangeToLoginPageButtonClicked
-        {
-            get { return new DelegateCommand(NavigateToLoginPage); }
-        }
+        public ICommand ChangeToLoginPageButtonClickedCommand { get; }
 
-        public ICommand ChangeToRegistrationPageButtonClicked
-        {
-            get { return new DelegateCommand(NavigateToRegistrationPage); }
-        }
+        public ICommand ChangeToRegistrationPageButtonClickedCommand { get; }
 
         private void NavigateToLoginPage()
         {
@@ -247,6 +241,12 @@ namespace IWeatherApp
             navigationFrame.Navigate(typeof(RegistrationPage));
         }
         #endregion
+
+        public StartViewModel()
+        {
+            ChangeToLoginPageButtonClickedCommand = new DelegateCommand(NavigateToLoginPage);
+            ChangeToRegistrationPageButtonClickedCommand = new DelegateCommand(NavigateToRegistrationPage);
+        }
 
         public async Task OnNavigatedTo()
         {

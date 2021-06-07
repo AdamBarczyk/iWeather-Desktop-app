@@ -44,14 +44,25 @@ namespace IWeatherApp.ViewModels
         public bool ArePasswordsMatch { get; set; }
         #endregion
 
-        public ICommand CancelButtonClicked
-        {
-            get { return new DelegateCommand(GoToStartPage); }
-        }
+        #region Navigation
+        public ICommand CancelButtonClickedCommand { get; }
 
-        public ICommand SignUpButtonClicked
+        public ICommand SignUpButtonClickedCommand { get; }
+
+        public ICommand GoBackButtonClickedCommand { get; }
+
+        private void GoToStartPage()
         {
-            get { return new DelegateCommand(SignUpUser); }
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(StartPage));
+        }
+        #endregion
+
+        public RegistrationViewModel()
+        {
+            CancelButtonClickedCommand = new DelegateCommand(GoToStartPage);
+            GoBackButtonClickedCommand = new DelegateCommand(GoToStartPage);
+            SignUpButtonClickedCommand = new DelegateCommand(SignUpUser);
         }
 
         private async void SignUpUser()
@@ -99,12 +110,6 @@ namespace IWeatherApp.ViewModels
             {
                 ArePasswordsMatch = false;
             }
-        }
-
-        private void GoToStartPage()
-        {
-            Frame navigationFrame = Window.Current.Content as Frame;
-            navigationFrame.Navigate(typeof(StartPage));
         }
     }
 }

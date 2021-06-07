@@ -241,15 +241,9 @@ namespace IWeatherApp
         #endregion
 
         #region Navigation
-        public ICommand SignOutButtonClicked
-        {
-            get { return new DelegateCommand( () => SignOutUser() ); }
-        }
+        public ICommand SignOutButtonClickedCommand { get; }
 
-        public ICommand GoToFavoritesButtonClicked
-        {
-            get { return new DelegateCommand( () => NavigateToFavoritesPage() ); }
-        }
+        public ICommand GoToFavoritesButtonClickedCommand { get; }
 
         private void NavigateToStartPage()
         {
@@ -262,18 +256,18 @@ namespace IWeatherApp
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(FavoritesPage));
         }
-
-
         #endregion
 
-        public ICommand SearchButtonClicked
-        {
-            get { return new DelegateCommand(async () => await SearchCity()); }
-        }
+        public ICommand SearchButtonClickedCommand { get; }
 
-        public ICommand FavoriteButtonClicked
+        public ICommand FavoriteButtonClickedCommand { get; }
+
+        public WeatherForecastViewModel()
         {
-            get { return new DelegateCommand(async () => await AddOrDeleteCityFromFavorites()); }
+            SignOutButtonClickedCommand = new DelegateCommand( () => SignOutUser() );
+            GoToFavoritesButtonClickedCommand = new DelegateCommand( () => NavigateToFavoritesPage() );
+            SearchButtonClickedCommand = new DelegateCommand( async () => await SearchCity() );
+            FavoriteButtonClickedCommand = new DelegateCommand( async () => await AddOrDeleteCityFromFavorites() );
         }
 
         /// <summary>

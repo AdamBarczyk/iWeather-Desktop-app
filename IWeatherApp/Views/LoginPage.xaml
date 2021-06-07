@@ -11,7 +11,7 @@
     <Grid>
 
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/img/bg.png" Opacity="0.65"/>
+            <ImageBrush ImageSource="../Assets/img/bg.png" Opacity="0.5"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -25,6 +25,24 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <!-- Grid for GoBack button -->
+        <Grid
+            Grid.Column="0"
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="10, 10, 10, 0"
+            ColumnSpacing="10">
+
+            <Button Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Content="Go Back" 
+                    Background="#f8d06c"
+                    Foreground="#2A5261"
+                    VerticalAlignment="Top"
+                    Command="{Binding GoBackButtonClickedCommand}"/>
+        </Grid>
 
         <Grid
             Grid.Column="1"
@@ -103,7 +121,7 @@
                     Background="#f8d06c"
                     Foreground="#2A5261"
                     VerticalAlignment="Top"
-                    Command="{Binding LoginButtonClicked}"/>
+                    Command="{Binding LoginButtonClickedCommand}"/>
 
                 <Button 
                     Grid.Column="1"
@@ -113,7 +131,7 @@
                     Background="#f8d06c"
                     Foreground="#2A5261"
                     VerticalAlignment="Top"
-                    Command="{Binding CancelButtonClicked}"/>
+                    Command="{Binding CancelButtonClickedCommand}"/>
             </Grid>
         </Grid>
     </Grid>

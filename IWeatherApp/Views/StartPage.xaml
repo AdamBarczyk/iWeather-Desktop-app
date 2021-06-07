@@ -13,7 +13,7 @@
         RowSpacing="30">
 
         <Grid.Background>
-            <ImageBrush ImageSource="../Assets/img/bg.png" Opacity="0.65"/>
+            <ImageBrush ImageSource="../Assets/img/bg.png" Opacity="0.5"/>
         </Grid.Background>
 
         <Grid.ColumnDefinitions>
@@ -51,7 +51,7 @@
                     Background="#f8d06c"
                     Foreground="#2A5261"
                     VerticalAlignment="Top"
-                    Command="{Binding ChangeToLoginPageButtonClicked}"/>
+                    Command="{Binding ChangeToLoginPageButtonClickedCommand}"/>
 
             <Button x:Name="btn_GoToRegistrationPage"
                     Grid.Column="1"
@@ -60,8 +60,7 @@
                     Background="#f8d06c"
                     Foreground="#2A5261"
                     VerticalAlignment="Top"
-                    Command="{Binding ChangeToRegistrationPageButtonClicked}"/>
-
+                    Command="{Binding ChangeToRegistrationPageButtonClickedCommand}"/>
         </Grid>
 
         <!-- Grid for the app logo -->
@@ -373,6 +372,7 @@
         <Grid
             Grid.Row="3"
             Grid.Column="1"
+            ColumnSpacing="10"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch">
 
@@ -388,11 +388,12 @@
 
             <!-- Grid for day 1 -->
             <Grid
-                    Grid.Column="0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -404,7 +405,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay1}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -421,7 +422,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay1}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -432,11 +433,12 @@
 
             <!-- Grid for day 2 -->
             <Grid
-                    Grid.Column="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -448,7 +450,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay2}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -465,7 +467,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay2}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -476,11 +478,12 @@
 
             <!-- Grid for day 3 -->
             <Grid
-                    Grid.Column="2"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -492,7 +495,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay3}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -509,7 +512,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay3}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -520,11 +523,12 @@
 
             <!-- Grid for day 4 -->
             <Grid
-                    Grid.Column="3"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="3"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -536,7 +540,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay4}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -553,7 +557,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay4}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -564,11 +568,12 @@
 
             <!-- Grid for day 5 -->
             <Grid
-                    Grid.Column="4"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="4"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -580,7 +585,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay5}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -597,7 +602,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay5}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -608,11 +613,12 @@
 
             <!-- Grid for day 6 -->
             <Grid
-                    Grid.Column="5"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="5"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -624,7 +630,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay6}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -641,7 +647,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay6}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -652,11 +658,12 @@
 
             <!-- Grid for day 7 -->
             <Grid
-                    Grid.Column="6"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    BorderBrush="#2A5261"
-                    BorderThickness="0.5">
+                Grid.Column="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                BorderBrush="#2A5261"
+                BorderThickness="1.5"
+                CornerRadius="30,30,30,30">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -668,7 +675,7 @@
                         Grid.Row="0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,10,10,0"
                         Text="{Binding DateDay7}"
                         FontSize="20"
                         FontWeight="Bold"
@@ -685,7 +692,7 @@
                         Grid.Row="2"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="10,0,10,0"
+                        Margin="10,0,10,10"
                         Text="{Binding TempDay7}"
                         FontSize="20"
                         FontWeight="Bold"
