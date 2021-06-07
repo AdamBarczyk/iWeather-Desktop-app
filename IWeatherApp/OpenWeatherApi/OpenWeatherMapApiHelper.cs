@@ -52,6 +52,15 @@ namespace IWeatherApp
             AssignSevenDaysWeatherData();
         }
 
+        public async Task GetCityWeatherData(int cityId)
+        {
+            await GetCurrentForecast(cityId);
+            await Get7DaysForecast();
+
+            AssignCurrentWeatherData();
+            AssignSevenDaysWeatherData();
+        }
+
         /// <summary>
         /// Gets api response for current weather forecast and converts it into JSON object
         /// </summary>

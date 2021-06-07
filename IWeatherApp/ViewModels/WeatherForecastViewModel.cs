@@ -272,15 +272,6 @@ namespace IWeatherApp
         public async Task OnNavigatedTo()
         {
             await LoadWeatherForCurrentLocation();
-
-            // -------------------------------- TESTOWANIE FIREBASE HELPERA --------------------------------
-            FirebaseHelper helper = new FirebaseHelper();
-            await helper.GetFavoritesCities();
-            await helper.DeleteCityFromFavorites(helper.Cities[0].Object.id) ;
-            await helper.PutFavoriteCity("city1", 123456);
-            await helper.GetFavoritesCities();
-
-            // ---------------------------------------------------------------------------------------------
         }
 
         private void SignOutUser()

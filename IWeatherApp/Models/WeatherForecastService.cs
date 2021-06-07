@@ -29,10 +29,10 @@ namespace IWeatherApp
         public double[] SevenDaysForecastTemps { get; set; }
         #endregion
 
-        public async Task LoadWeatherData(string city)
+        public async Task LoadWeatherData(string cityName)
         {
             OpenWeatherMapApiHelper apiHelper = new OpenWeatherMapApiHelper();
-            await apiHelper.GetCityWeatherData(city);
+            await apiHelper.GetCityWeatherData(cityName);
 
             // data for current weather forecast
             CityName = apiHelper.CityName;
@@ -52,6 +52,36 @@ namespace IWeatherApp
             SevenDaysForecastTemps = new double[7];
             SevenDaysForecastWeatherIconNames = new string[7];
             for (int i=0; i<7; i++)
+            {
+                SevenDaysForecastDates[i] = apiHelper.SevenDaysForecastDates[i];
+                SevenDaysForecastTemps[i] = Math.Round(apiHelper.SevenDaysForecastTemps[i]);
+                SevenDaysForecastWeatherIconNames[i] = apiHelper.SevenDaysForecastWeatherIconNames[i];
+            }
+        }
+
+        public async Task LoadWeatherData(int cityId)
+        {
+            OpenWeatherMapApiHelper apiHelper = new OpenWeatherMapApiHelper();
+            await apiHelper.GetCityWeatherData(cityId);
+
+            // data for current weather forecast
+            CityName = apiHelper.CityName;
+            Description = apiHelper.Description;
+            MainTemp = Math.Round(apiHelper.MainTemp);
+            FeelTemp = Math.Round(apiHelper.FeelTemp);
+            MinTemp = Math.Round(apiHelper.MinTemp);
+            MaxTemp = Math.Round(apiHelper.MaxTemp);
+            Pressure = Math.Round(apiHelper.Pressure);
+            Humidity = Math.Round(apiHelper.Humidity);
+            Wind = Math.Round(apiHelper.Wind);
+            CityId = apiHelper.CityId;
+            WeatherIconName = apiHelper.WeatherIconName;
+
+            // data for 7 days weather forecast
+            SevenDaysForecastDates = new string[7];
+            SevenDaysForecastTemps = new double[7];
+            SevenDaysForecastWeatherIconNames = new string[7];
+            for (int i = 0; i < 7; i++)
             {
                 SevenDaysForecastDates[i] = apiHelper.SevenDaysForecastDates[i];
                 SevenDaysForecastTemps[i] = Math.Round(apiHelper.SevenDaysForecastTemps[i]);
