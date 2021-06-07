@@ -10,6 +10,8 @@ namespace IWeatherApp
     {
         public static string WeatherIconPathPart1 = "https://openweathermap.org/img/wn/";
         public static string WeatherIconPathPart2 = "@2x.png";
+        public static string FavoriteIconPath = "/Assets/img/favorite.png";
+        public static string FavoriteBorderIconPath = "/Assets/img/favorite_border.png";
 
         public static string CelsiusDegree = "°C";
         public static string PressureUnit = " hPa";

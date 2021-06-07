@@ -23,21 +23,36 @@ namespace IWeatherApp
         public string Email
         {
             get { return _email; }
-            set { _email = value; OnPropertyChanged("Email"); }
+            set { _email = value.ToLower(); OnPropertyChanged(); }
         }
 
         public string Password
         {
             get { return _password; }
-            set { _password = value; OnPropertyChanged("Password"); }
+            set { _password = value; OnPropertyChanged(); }
         }
 
         public string ErrorMessage
         {
             get { return _errorMessage; }
-            set { _errorMessage = value; OnPropertyChanged("ErrorMessage"); }
+            set { _errorMessage = value; OnPropertyChanged(); }
         }
         #endregion
+
+        #region Navigation
+        public ICommand CancelButtonClicked { get; }
+
+        private void CancelRegistration()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(RegistrationPage));
+        }
+        #endregion
+
+        public LoginViewModel()
+        {
+            CancelButtonClicked = new DelegateCommand( CancelRegistration );
+        }
 
         public ICommand LoginButtonClicked
         {

@@ -173,6 +173,8 @@
   <ItemGroup>
     <Content Include="Assets\img\apple.png" />
     <Content Include="Assets\img\bg.png" />
+    <Content Include="Assets\img\favorite.png" />
+    <Content Include="Assets\img\favorite_border.png" />
     <Content Include="Assets\img\google-play-download-android-app.png" />
     <Content Include="Assets\img\IOS-EN.png" />
     <Content Include="Assets\img\logo.png" />

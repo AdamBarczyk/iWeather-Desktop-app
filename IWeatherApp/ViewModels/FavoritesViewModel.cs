@@ -4,7 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using IWeatherApp.Views;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace IWeatherApp
 {
@@ -13,7 +17,7 @@ namespace IWeatherApp
         WeatherForecastService _weatherForecastService = null;
         FirebaseHelper _firebaseHelper = null;
 
-        // --------------------------------- Testowanie bindingu listView ---------------------------------
+        #region Variables/properties for favorite cities lists
         private IList<CityForecastItem> _favoriteCitiesTmp;
         private ObservableCollection<CityForecastItem> _favoriteCities;
         public ObservableCollection<CityForecastItem> FavoriteCities 
@@ -21,42 +25,28 @@ namespace IWeatherApp
             get { return _favoriteCities; } 
             set { _favoriteCities = value; OnPropertyChanged(); }
         }
+        #endregion
 
-        //public IList<Item1> Fruits { get; } = new List<Item1> 
-        //{
-        //    new Item1 
-        //    {
-        //        Name = "krakow",
-        //        Temp = 11
-        //    },
-        //    new Item1
-        //    {
-        //        Name = "krakow",
-        //        Temp = 12
-        //    },
-        //    new Item1
-        //    {
-        //        Name = "krakow",
-        //        Temp = 13
-        //    },
-        //    new Item1
-        //    {
-        //        Name = "krakow",
-        //        Temp = 14
-        //    },
-        //    new Item1
-        //    {
-        //        Name = "krakow",
-        //        Temp = 15
-        //    },
+        #region Navigation
+        public ICommand GoBackButtonClicked
+        {
+            get { return new DelegateCommand( () => NavigateToWeatherForecastPage() ); }
+        }
 
-        //};
-        // ------------------------------------------------------------------------------------------------
-        
+        private void NavigateToWeatherForecastPage()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(WeatherForecastPage));
+        }
+        #endregion
+
+        public ICommand FavoriteButtonClickedCommand
+        {
+            get { return new DelegateCommand(async () => await DeleteCityFromFavorites()); }
+        }
+
         public async Task OnNavigatedTo()
         {
-            // -------------------------------- TESTOWANIE FIREBASE HELPERA --------------------------------
-
             // initialize firebase helper
             _firebaseHelper = new FirebaseHelper();
             await _firebaseHelper.GetFavoritesCities();
@@ -66,12 +56,6 @@ namespace IWeatherApp
             FavoriteCities = new ObservableCollection<CityForecastItem>();
 
             await FillFavoriteCitiesList();
-
-            //await helper.DeleteCityFromFavorites(helper.Cities[0].Object.id);
-            //await helper.PutFavoriteCity("city1", 123456);
-            //await helper.GetFavoritesCities();
-
-            // ---------------------------------------------------------------------------------------------
         }
 
         private async Task FillFavoriteCitiesList()
@@ -82,8 +66,40 @@ namespace IWeatherApp
                 await SearchCityById(city.Object.id);
 
                 // show cities on the page after sorting tmp list with all cities by length of the city names
-                FavoriteCities = new ObservableCollection<CityForecastItem>(_favoriteCitiesTmp.OrderByDescending(e => e.CityName.Length));
+                FavoriteCities = new ObservableCollection<CityForecastItem>(
+                    _favoriteCitiesTmp.OrderByDescending(e => e.CityName.Length)
+                    );
             }
+        }
+
+        /// <summary>
+        /// Deletes city from favorites after the user clicked on favorite button under weather details of the city
+        /// and refreshes the content on the page
+        /// </summary>
+        /// <returns></returns>
+        private async Task DeleteCityFromFavorites()
+        {
+            await new MessageDialog("DUPA DUPA DUPA UDPA").ShowAsync();
+
+            // get the current favorites list
+            FirebaseHelper firebaseHelper = new FirebaseHelper();
+            await firebaseHelper.GetFavoritesCities();
+
+            // delete the city from favorites
+            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            {
+                await firebaseHelper.DeleteCityFromFavorites(_weatherForecastService.CityId);
+            }
+            else
+            {
+                // if the city is not in favorites for some reason, then show notification to the user
+                // to contact with the developer
+                await new MessageDialog("There is not such city in the database. \n " +
+                    "Let's try to contact with the autor of this application, please").ShowAsync();
+            }
+
+            // refresh the layout
+            await FillFavoriteCitiesList();
         }
 
         private async Task SearchCityById(int cityId)
@@ -113,14 +129,7 @@ namespace IWeatherApp
 
             // put the created city item into the tmp list with all city items
             _favoriteCitiesTmp.Add(item);
-            //FavoriteCities = new ObservableCollection<CityForecastItem>(FavoriteCities.OrderByDescending(e => e.CityName));
         }
-    }
-
-    class Item1
-    {
-        public string Name { get; set; }
-        public int Temp { get; set; }
     }
 
     class CityForecastItem

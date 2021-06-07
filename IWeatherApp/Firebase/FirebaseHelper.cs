@@ -54,13 +54,24 @@ namespace IWeatherApp
             // cities - list of the favorites cities for the current user
             Cities = (List<FirebaseObject<Favorite>>)await _firebase
                 .Child(userId).Child("favourites").OrderByKey().OnceAsync<Favorite>();
-            string tmp = "";
+        }
+
+        /// <summary>
+        /// Check if the city is in the favorite list
+        /// </summary>
+        /// <param name="cityId">The id of the city to check</param>
+        /// <returns></returns>
+        public bool CityIsInFavorites(int cityId)
+        {
             foreach (var city in Cities)
             {
-                tmp += $"{city.Object.id} is {city.Object.name} || ";
+                if (city.Object.id == cityId)
+                {
+                    return true;
+                }
             }
-
-            await new MessageDialog(tmp).ShowAsync();
+            // if city with such id hasn't been found, return false
+            return false;
         }
 
         public async Task PutFavoriteCity(string cityName, int cityId)

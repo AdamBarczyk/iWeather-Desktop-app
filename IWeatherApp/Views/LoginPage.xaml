@@ -8,10 +8,6 @@
     mc:Ignorable="d"
     Background="White">
 
-    <!--<Page.DataContext>
-        <local:LoginPageViewModel/>
-    </Page.DataContext>-->
-
     <Grid>
 
         <Grid.Background>
@@ -110,14 +106,14 @@
                     Command="{Binding LoginButtonClicked}"/>
 
                 <Button 
-                    x:Name="btn_GoToRegistrationPage"
                     Grid.Column="1"
                     HorizontalAlignment="Stretch"
                     Margin="20,0,0,0"
                     Content="Sign Up" 
                     Background="#f8d06c"
                     Foreground="#2A5261"
-                    VerticalAlignment="Top"/>
+                    VerticalAlignment="Top"
+                    Command="{Binding CancelButtonClicked}"/>
             </Grid>
         </Grid>
     </Grid>

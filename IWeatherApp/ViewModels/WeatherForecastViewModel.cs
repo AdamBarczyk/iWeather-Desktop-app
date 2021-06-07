@@ -15,9 +15,14 @@ namespace IWeatherApp
     {
         WeatherForecastService _weatherForecastService = null;
 
-        // --------------------------------- Testowanie bindingu listView ---------------------------------
-        public IList<string> Fruits { get; } = new List<string> { "c1", "c2", "c3" };
-        // ------------------------------------------------------------------------------------------------
+        #region Property for favorite icon
+        private string _favoriteIconPath;
+        public string FavoriteIconPath
+        {
+            get { return _favoriteIconPath; }
+            set { _favoriteIconPath = value; OnPropertyChanged(); }
+        }
+        #endregion
 
         #region Properties for current weather
         private string _searchString;
@@ -241,9 +246,9 @@ namespace IWeatherApp
             get { return new DelegateCommand( () => SignOutUser() ); }
         }
 
-        public ICommand FavoritesButtonClicked
+        public ICommand GoToFavoritesButtonClicked
         {
-            get { return new DelegateCommand(() => NavigateToFavoritesPage() ); }
+            get { return new DelegateCommand( () => NavigateToFavoritesPage() ); }
         }
 
         private void NavigateToStartPage()
@@ -266,12 +271,18 @@ namespace IWeatherApp
             get { return new DelegateCommand(async () => await SearchCity()); }
         }
 
+        public ICommand FavoriteButtonClicked
+        {
+            get { return new DelegateCommand(async () => await AddOrDeleteCityFromFavorites()); }
+        }
+
         /// <summary>
         /// method called when this page is loading
         /// </summary>
         public async Task OnNavigatedTo()
         {
             await LoadWeatherForCurrentLocation();
+            await IsCityInFavorites();
         }
 
         private void SignOutUser()
@@ -289,6 +300,9 @@ namespace IWeatherApp
 
             // update the model
             await _weatherForecastService.LoadWeatherData(SearchString);
+
+            // update favorite icon
+            await IsCityInFavorites();
 
             // update the view with data from the model
             PushDataToTheView();
@@ -310,6 +324,54 @@ namespace IWeatherApp
             await _weatherForecastService.LoadWeatherData(city);
 
             PushDataToTheView();
+        }
+
+        /// <summary>
+        /// Checks if the city is in favorites list and sets favorite icon depending on that
+        /// </summary>
+        /// <returns></returns>
+        private async Task IsCityInFavorites()
+        {
+            // get the current favorites list
+            FirebaseHelper firebaseHelper = new FirebaseHelper();
+            await firebaseHelper.GetFavoritesCities();
+
+            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            {
+                FavoriteIconPath = Constants.FavoriteIconPath;
+            }
+            else
+            {
+                FavoriteIconPath = Constants.FavoriteBorderIconPath;
+            }
+        }
+
+        /// <summary>
+        /// Adds city to the favorite cities list if the city doesn't belong to it
+        /// Deletes city from the favorite cities list if the city belong to it
+        /// </summary>
+        /// <returns></returns>
+        private async Task AddOrDeleteCityFromFavorites()
+        {
+            // get the current favorites list
+            FirebaseHelper firebaseHelper = new FirebaseHelper();
+            await firebaseHelper.GetFavoritesCities();
+
+            // Add or delete the city form favorites
+            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            {
+                await firebaseHelper.DeleteCityFromFavorites(_weatherForecastService.CityId);
+            }
+            else
+            {
+                await firebaseHelper.PutFavoriteCity(
+                    _weatherForecastService.CityName, 
+                    _weatherForecastService.CityId
+                    );
+            }
+
+            // reload favorite icon
+            await IsCityInFavorites();
         }
 
         private void PushDataToTheView()

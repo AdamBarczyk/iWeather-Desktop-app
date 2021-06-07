@@ -29,12 +29,6 @@ namespace IWeatherApp
             this.DataContext = _viewModel = new LoginViewModel();
 
             this.InitializeComponent();
-            this.btn_GoToRegistrationPage.Click += Btn_GoToRegistrationPage_Click;
-        }
-
-        private void Btn_GoToRegistrationPage_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(RegistrationPage));
         }
     }
 }

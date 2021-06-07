@@ -66,8 +66,7 @@
                     Background="#f8d06c"
                     Foreground="#2A5261"
                     VerticalAlignment="Top"
-                    Command="{Binding FavoritesButtonClicked}"/>
-
+                    Command="{Binding GoToFavoritesButtonClicked}"/>
         </Grid>
 
         <!-- Grid for the search bar -->
@@ -128,6 +127,21 @@
                 Foreground="#2A5261"
                 TextWrapping="Wrap"
                 HorizontalAlignment="Center"/>
+
+            <!-- favorite button in the same row as city name -->
+            <Button
+                Grid.Row="0"
+                Width="40"
+                Height="40"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                BorderThickness="0"
+                Padding="0"
+                Background="Transparent"
+                Command="{Binding FavoriteButtonClicked}">
+                <Image Source="{Binding FavoriteIconPath}"/>
+            </Button>
+            <!-- end -->
 
             <TextBlock
                 Grid.Row="1"
@@ -719,32 +733,6 @@
             </Grid>
 
         </Grid>
-
-
-        <!-- ############################# Testowanie bindingu listView #############################-->
-        <Grid Grid.Row="4"
-              Grid.Column="1">
-
-            <ListView x:Name="FruitsList"
-                      ItemsSource="{Binding Fruits}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="x:String">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="47"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Image Source="Assets/placeholder.png" Width="32" Height="32"
-                                HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBlock Text="{x:Bind}" Foreground="Teal" FontSize="14" 
-                                Grid.Column="1" VerticalAlignment="Center"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-        <!-- ##################################################################################### -->
-
     </Grid>
 </Page>
 
