@@ -8,8 +8,8 @@ namespace IWeatherApp
 {
     class LoginService
     {
-        private string email;
-        private string password;
+        private string _email;
+        private string _password;
         private bool _isSignedIn = false;
         public bool IsSignedIn
         {
@@ -19,13 +19,13 @@ namespace IWeatherApp
 
         public LoginService(string email, string password)
         {
-            this.email = email;
-            this.password = password;
+            this._email = email;
+            this._password = password;
         }
 
         public async Task SignInUserAsync()
         {
-            await UserService.Singleton.SignInUser(email, password);
+            await UserService.Singleton.SignInUser(_email, _password);
 
             // pass _isSignedIn status from userService to this Model
             IsSignedIn = UserService.Singleton.IsSignedIn;

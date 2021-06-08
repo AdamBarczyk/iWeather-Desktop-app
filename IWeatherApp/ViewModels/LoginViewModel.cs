@@ -43,6 +43,7 @@ namespace IWeatherApp
         public ICommand CancelButtonClickedCommand { get; }
         public ICommand GoBackButtonClickedCommand { get; }
         public ICommand LoginButtonClickedCommand { get; }
+        public ICommand ResetPasswordButtonClickedCommand { get; }
 
         private void CancelRegistration()
         {
@@ -55,6 +56,12 @@ namespace IWeatherApp
             Frame navigationFrame = Window.Current.Content as Frame;
             navigationFrame.Navigate(typeof(StartPage));
         }
+
+        private void GoToResetPasswordPage()
+        {
+            Frame navigationFrame = Window.Current.Content as Frame;
+            navigationFrame.Navigate(typeof(ResetPasswordPage));
+        }
         #endregion
 
         public LoginViewModel()
@@ -62,6 +69,7 @@ namespace IWeatherApp
             CancelButtonClickedCommand = new DelegateCommand(CancelRegistration);
             GoBackButtonClickedCommand = new DelegateCommand(GoBackToStartPage);
             LoginButtonClickedCommand = new DelegateCommand(SignInUser);
+            ResetPasswordButtonClickedCommand = new DelegateCommand(GoToResetPasswordPage);
         }
 
         private async void SignInUser()
@@ -80,12 +88,6 @@ namespace IWeatherApp
             {
                 ErrorMessage = _loginService.ShowError();
             }
-
-            //OpenWeatherMapApiHelper apiHelper = new OpenWeatherMapApiHelper();
-            //await apiHelper.GetCityWeatherData("Kraków");
-
-            //Geolocalizator geolocalizator = new Geolocalizator();
-            //await geolocalizator.GetLocationAsync();
         }
     }
 }

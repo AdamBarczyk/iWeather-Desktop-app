@@ -78,7 +78,7 @@ namespace IWeatherApp
                 // if the user is signed in, then it gets him signed out
                 IsSignedIn = false;
 
-                new MessageDialog(e.Message);
+                //await new MessageDialog(e.Message).ShowAsync();
             }
         }
 
@@ -107,7 +107,28 @@ namespace IWeatherApp
             catch (Exception e)
             {
                 IsRegistrationSucceeded = false;
-                new MessageDialog(e.Message);
+                await new MessageDialog(e.Message).ShowAsync();
+            }
+        }
+
+        /// <summary>
+        /// Sends user an email with a link to reset his password
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task SendPasswordResetEmail(string email)
+        {
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(Credentials.FirebaseApiKey));
+
+            try
+            {
+                await authProvider.SendPasswordResetEmailAsync(email);
+                await new MessageDialog("If such email address exists in our database, then " +
+                    "the password reset link has been sent to your mail inbox").ShowAsync();
+            }
+            catch (Exception e)
+            {
+                await new MessageDialog(e.Message).ShowAsync();
             }
         }
     }
