@@ -13,7 +13,7 @@ namespace IWeatherApp
 {
     class FirebaseHelper
     {
-        public List<FirebaseObject<Favorite>> Cities { get; set; }
+        //public List<FirebaseObject<Favorite>> Cities { get; set; }
         private FirebaseClient _firebase;
 
         internal class Favorite
@@ -47,12 +47,12 @@ namespace IWeatherApp
         }
 
         // wywolywane testowo w WeatherForecastViewModel.cs
-        public async Task GetFavoritesCities()
+        public async Task<List<FirebaseObject<Favorite>>> GetFavoritesCities()
         {
             string userId = UserService.Singleton.UserData.User.LocalId;
 
             // cities - list of the favorites cities for the current user
-            Cities = (List<FirebaseObject<Favorite>>)await _firebase
+            return (List<FirebaseObject<Favorite>>)await _firebase
                 .Child(userId).Child("favourites").OrderByKey().OnceAsync<Favorite>();
         }
 
@@ -61,9 +61,9 @@ namespace IWeatherApp
         /// </summary>
         /// <param name="cityId">The id of the city to check</param>
         /// <returns></returns>
-        public bool CityIsInFavorites(int cityId)
+        public async Task<bool> CityIsInFavorites(int cityId)
         {
-            foreach (var city in Cities)
+            foreach (var city in await GetFavoritesCities())
             {
                 if (city.Object.id == cityId)
                 {
@@ -81,7 +81,7 @@ namespace IWeatherApp
             // get current list of favorites cities
             await GetFavoritesCities();
 
-            if (Cities.Count < Constants.MaxNumberOfFavoritesCities)
+            if ((await GetFavoritesCities()).Count < Constants.MaxNumberOfFavoritesCities)
             {
                 // create new city to add to favorites list
                 Favorite newFavoriteCity = new Favorite(cityName, cityId);
@@ -104,7 +104,7 @@ namespace IWeatherApp
             await GetFavoritesCities();
 
             // check if given city exists in favorites list
-            foreach (var city in Cities)
+            foreach (var city in await GetFavoritesCities())
             {
                 if (city.Object.id == cityId)
                 {

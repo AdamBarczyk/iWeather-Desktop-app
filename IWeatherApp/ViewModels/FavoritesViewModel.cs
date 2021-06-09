@@ -37,39 +37,41 @@ namespace IWeatherApp
         }
         #endregion
 
-        public ICommand FavoriteButtonClickedCommand { get; }
-
         public FavoritesViewModel()
         {
             GoBackButtonClickedCommand = new DelegateCommand( () => NavigateToWeatherForecastPage() );
-            FavoriteButtonClickedCommand = new DelegateCommand(async () => await DeleteCityFromFavorites());
         }
 
         public async Task OnNavigatedTo()
         {
             // initialize firebase helper
             _firebaseHelper = new FirebaseHelper();
-            await _firebaseHelper.GetFavoritesCities();
 
             // initialize list for storing favorites cities, which will be shown on the page
-            _favoriteCitiesTmp = new ObservableCollection<CityForecastItem>(); // tmp list
+            _favoriteCitiesTmp = new List<CityForecastItem>(); // tmp list
             FavoriteCities = new ObservableCollection<CityForecastItem>();
 
-            await FillFavoriteCitiesList();
+            await RefreshFavoriteCitiesList();
         }
 
-        private async Task FillFavoriteCitiesList()
+        private async Task RefreshFavoriteCitiesList()
         {
-            foreach (var city in _firebaseHelper.Cities)
+            _favoriteCitiesTmp.Clear();
+            foreach (var city in await _firebaseHelper.GetFavoritesCities())
             {
-                await new MessageDialog(city.Object.name + "||" +  city.Object.id.ToString()).ShowAsync();
-                await SearchCityById(city.Object.id);
+                var item = await SearchCityById(city.Object.id);
 
-                // show cities on the page after sorting tmp list with all cities by length of the city names
-                FavoriteCities = new ObservableCollection<CityForecastItem>(
-                    _favoriteCitiesTmp.OrderByDescending(e => e.CityName.Length)
-                    );
+                // 
+                item.SetFavoriteButtonClickedHandler(DeleteCityFromFavorites);
+
+                // put the created city item into the tmp list with all city items
+                _favoriteCitiesTmp.Add(item);
             }
+
+            // show cities on the page after sorting tmp list with all cities by length of the city names
+            FavoriteCities = new ObservableCollection<CityForecastItem>(
+                _favoriteCitiesTmp.OrderByDescending(e => e.CityName.Length)
+                );
         }
 
         /// <summary>
@@ -77,18 +79,15 @@ namespace IWeatherApp
         /// and refreshes the content on the page
         /// </summary>
         /// <returns></returns>
-        private async Task DeleteCityFromFavorites()
+        private async Task DeleteCityFromFavorites(int cityId)
         {
-            await new MessageDialog("DUPA DUPA DUPA UDPA").ShowAsync();
-
             // get the current favorites list
-            FirebaseHelper firebaseHelper = new FirebaseHelper();
-            await firebaseHelper.GetFavoritesCities();
+            await _firebaseHelper.GetFavoritesCities();
 
             // delete the city from favorites
-            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            if (await _firebaseHelper.CityIsInFavorites(cityId))
             {
-                await firebaseHelper.DeleteCityFromFavorites(_weatherForecastService.CityId);
+                await _firebaseHelper.DeleteCityFromFavorites(cityId);
             }
             else
             {
@@ -99,10 +98,11 @@ namespace IWeatherApp
             }
 
             // refresh the layout
-            await FillFavoriteCitiesList();
+            //await Task.Delay(TimeSpan.FromSeconds(5)); 
+            await RefreshFavoriteCitiesList();
         }
 
-        private async Task SearchCityById(int cityId)
+        private async Task<CityForecastItem> SearchCityById(int cityId)
         {
             if (_weatherForecastService is null)
             {
@@ -115,6 +115,7 @@ namespace IWeatherApp
             // create an item for storing data about weather for searched city
             CityForecastItem item = new CityForecastItem
             {
+                CityId = _weatherForecastService.CityId,
                 CityName = _weatherForecastService.CityName,
                 Description = _weatherForecastService.Description,
                 MainTemp = _weatherForecastService.MainTemp.ToString() + Constants.CelsiusDegree,
@@ -127,13 +128,13 @@ namespace IWeatherApp
                 WeatherIconPath = Constants.WeatherIconPathPart1 + _weatherForecastService.WeatherIconName + Constants.WeatherIconPathPart2,
             };
 
-            // put the created city item into the tmp list with all city items
-            _favoriteCitiesTmp.Add(item);
+            return item;
         }
     }
 
     class CityForecastItem
     {
+        public int CityId { get; set; }
         public string CityName { get; set; }
         public string Description { get; set; }
         public string MainTemp { get; set; }
@@ -144,5 +145,12 @@ namespace IWeatherApp
         public string Humidity { get; set; }
         public string Wind { get; set; }
         public string WeatherIconPath { get; set; }
+
+        public ICommand FavoriteButtonClickedCommand { get; private set; }
+
+        public void SetFavoriteButtonClickedHandler(Func<int, Task> handler)
+        {
+            FavoriteButtonClickedCommand = new DelegateCommand(async () => await handler.Invoke(CityId));
+        }
     }
 }

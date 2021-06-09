@@ -8,8 +8,8 @@
 
   <Identity
     Name="7256ffff-4322-4e56-9bb1-cf30eb627533"
-    Publisher="CN=adamb"
-    Version="1.0.0.0" />
+    Publisher="CN=IWeatherApp Certificate"
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="7256ffff-4322-4e56-9bb1-cf30eb627533" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -39,6 +39,8 @@
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

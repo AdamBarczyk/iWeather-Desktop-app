@@ -330,7 +330,7 @@ namespace IWeatherApp
             FirebaseHelper firebaseHelper = new FirebaseHelper();
             await firebaseHelper.GetFavoritesCities();
 
-            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            if (await firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
             {
                 FavoriteIconPath = Constants.FavoriteIconPath;
             }
@@ -352,7 +352,7 @@ namespace IWeatherApp
             await firebaseHelper.GetFavoritesCities();
 
             // Add or delete the city form favorites
-            if (firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
+            if (await firebaseHelper.CityIsInFavorites(_weatherForecastService.CityId))
             {
                 await firebaseHelper.DeleteCityFromFavorites(_weatherForecastService.CityId);
             }
