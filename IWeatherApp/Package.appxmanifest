@@ -9,7 +9,7 @@
   <Identity
     Name="7256ffff-4322-4e56-9bb1-cf30eb627533"
     Publisher="CN=IWeatherApp Certificate"
-    Version="1.0.1.0" />
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="7256ffff-4322-4e56-9bb1-cf30eb627533" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

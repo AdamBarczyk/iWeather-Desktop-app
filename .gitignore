@@ -151,7 +151,7 @@ csx/
 *.build.csdef
 
 # Microsoft Store app package directory
-AppPackages/
+# AppPackages/
 
 # Others
 *.[Cc]ache
